@@ -1,0 +1,304 @@
+{%extends 'admin/ad_base.html'%}
+{%load static%}
+{%block content%}
+<style>
+  .Search {
+    margin-top: 4%;
+    float: right;
+    margin-right: 5%;
+    padding-left: 3%;
+    padding-right: 3%;
+    line-height: 2;
+
+  }
+</style>
+
+
+<div class="row " style="background-color: black;">
+  <div class="" style="font-size: 20px;font-weight: 600;color:#6C7293 ;">Create Work</div>
+</div>
+<div class="row mt-3">
+  <div class="col-md-2"></div>
+  <div class="col-md-8">
+    <div class="card">
+      <div class="card-body">
+        <form action="" method="post" enctype="multipart/form-data">
+          {% csrf_token %}
+
+          <fieldset>
+            <legend>Clint Information</legend>
+            <div class="row pt-1">
+              <div class="col-md-4">
+                <div class="mr-2 ml-3 mt-2" style="color:white ;">Client Name </div>
+              </div>
+              <div class="col-md-8 ">
+                <input type="text" class="drop form-control ml-3 mt-2 text-light" style="border:1px solid #6C7293 ;color:#6C7293;">
+              </div>
+            </div>
+            <div class="row pt-1">
+              <div class="col-md-4">
+                <div class=" mr-2 ml-3 mt-2" style="color:white ;">Address</div>
+              </div>
+              <div class="col-md-8 ">
+                <textarea name="description" class="drop form-control ml-3 mt-2 text-light" required
+                  style="border:1px solid #6C7293 ;height:70px;"></textarea>
+              </div>
+            </div>
+            <div class="row pt-1">
+              <div class="col-md-4">
+                <div class="mr-2 ml-3 mt-2" style="color:white ;">Mail Id </div>
+              </div>
+              <div class="col-md-8 ">
+                <input type="text" class="drop form-control ml-3 mt-2 text-light" style="border:1px solid #6C7293 ;color:#6C7293;">
+              </div>
+            </div>
+          </fieldset>
+          <div class="row pt-1">
+            <div class="col-md-4">
+              <div class="mr-2 ml-3 mt-2" style="color:white ;">Business Name</div>
+            </div>
+            <div class="col-md-8 ">
+              <input type="text" name="subtask" class="drop form-control ml-3 mt-2 text-light" autocomplete="off" required
+                style="border:1px solid #6C7293 ;">
+            </div>
+          </div>
+          <div class="row pt-1">
+            <div class="col-md-4">
+              <div class="mr-2 ml-3 mt-2" style="color:white ;">Website URL</div>
+            </div>
+            <div class="col-md-8 ">
+              <input type="text" class="drop form-control ml-3 mt-2 text-light" style="border:1px solid #6C7293 ;color:#6C7293;">
+            </div>
+          </div>
+          <div class="row pt-1">
+            <div class="col-md-4">
+              <div class=" mr-2 ml-3 mt-2 text-light" style="color:white ;">Location</div>
+            </div>
+            <div class="col-md-8 ">
+              <input type="text" class="drop form-control ml-3 mt-2 text-light" style="border:1px solid #6C7293 ;color:#6C7293;">
+           
+            </div>
+          </div>
+          
+          <div class="row pt-1">
+            <div class="col-md-4">
+              <div class="mr-2 ml-3 mt-2" style="color:white ;">Attach Files</div>
+            </div>
+            <div class="col-md-8 ">
+              <input type="file" name="files" class="form-control mt-2 "
+                style="text-decoration:none;border:none;background-color: #191c24;color:#6C7293 ;">
+            </div>
+          </div>
+
+          <div class="row pt-1">
+            
+            <div class="col-md-4 ">
+              
+                <input type="checkbox" class="ml-3 mt-2 text-light" id="seo" value="SEO" name="seo" onclick=check_seo()>
+                <label for="" class="mr-2 ml-3 mt-2" style="color:white ;">SEO</label>
+              
+            </div>
+            <div class="col-md-8 ">
+              <textarea name="seo_txt" id="seo_txt" class="drop form-control ml-3 mt-2 text-light" required
+                style="border:1px solid #6C7293 ;height:70px; display: none;" ></textarea>
+            </div>
+            
+
+            <div class="col-md-4 ">
+              <input type="checkbox" class="ml-3 mt-2 text-light" onclick=check_smm() name="smm" id="smm" value="SMM">
+              <label for="" class="mr-2 ml-3 mt-2" style="color:white ;">SMM</label>
+            </div>
+            <div class="col-md-8 ">
+              <textarea name="smm_txt" id="smm_txt" class="drop form-control ml-3 mt-2 text-light" required
+                style="border:1px solid #6C7293 ;height:70px;display: none;"  ></textarea>
+            </div>
+              
+            <div class="col-md-4 ">
+              <input type="checkbox" value="SEM/PPC" id="sem" onclick=check_sem() name="sem" class="ml-3 mt-2 text-light" >
+              <label for="" class="mr-2 ml-3 mt-2" style="color:white ;">SEM/PPC</label>
+            </div>
+            <div class="col-md-8 ">
+              <textarea name="sem_txt" id="sem_txt" class="drop form-control ml-3 mt-2 text-light" required
+                style="border:1px solid #6C7293 ;height:70px;display: none;" ></textarea>
+            </div>
+
+            <div class="col-md-4 ">
+              <input type="checkbox" class="ml-3 mt-2 text-light" onclick=check_em() id="em" name="em" value="Email Marketing">
+              <label for="" class="mr-2 ml-3 mt-2" style="color:white ;">Email Marketing</label>
+            </div>
+            <div class="col-md-8 ">
+              <textarea name="em_txt" id="em_txt" name="em_txt" class="drop form-control ml-3 mt-2 text-light" required
+                style="border:1px solid #6C7293 ;height:70px;display: none;" ></textarea>
+            </div>
+
+            
+            <div class="col-md-4 ">
+              <input type="checkbox" class="ml-3 mt-2 text-light" onclick=check_cm() name="cm" id="cm" value="Content Marketing" >
+              <label for="" class="mr-2 ml-3 mt-2" style="color:white ;">Content Marketing</label>
+            </div>
+            <div class="col-md-8 ">
+              <textarea name="cm_txt" id="cm_txt" class="drop form-control ml-3 mt-2 text-light" required
+                style="border:1px solid #6C7293 ;height:70px;display: none;" ></textarea>
+            </div>
+
+
+            <div class="col-md-4 ">
+              <input type="checkbox" class="ml-3 mt-2 text-light" onclick=check_am() name="am" id="am" value="Affiliate Marketing" >
+              <label for="" class="mr-2 ml-3 mt-2" style="color:white ;">Affiliate Marketing</label>
+            </div>
+            <div class="col-md-8 ">
+              <textarea name="am_txt" id="am_txt" class="drop form-control ml-3 mt-2 text-light" required
+                style="border:1px solid #6C7293 ;height:70px;display: none;" ></textarea>
+            </div>
+              
+            <div class="col-md-4 ">
+              <input type="checkbox" class="ml-3 mt-2 text-light" onclick=check_mm() name="mm" id="mm" value="Mobile marketing">
+              <label for="" class="mr-2 ml-3 mt-2" style="color:white ;">Mobile marketing</label>
+            </div>
+            <div class="col-md-8 ">
+              <textarea name="mm_txt" id="mm_txt" class="drop form-control ml-3 mt-2 text-light" required
+                style="border:1px solid #6C7293 ;height:70px; display: none;" ></textarea>
+            </div>
+
+            <div class="col-md-4 ">
+              <input type="checkbox" class="ml-3 mt-2 text-light" onclick=check_vm() name="vm" id="vm" value="Video Marketing">
+              <label for="" class="mr-2 ml-3 mt-2" style="color:white ;">Video Marketing</label>
+            </div>
+            <div class="col-md-8 ">
+              <textarea name="vm_txt" id="vm_txt" class="drop form-control ml-3 mt-2 text-light" required
+                style="border:1px solid #6C7293 ;height:70px;display: none;" ></textarea>
+            </div>
+           
+            </div>
+            <div class="col-md-4 ">
+              <button type="submit" name="submit" id="alert2" class="btn-primary Search">+</button>
+              
+            </div>
+          </div>
+          
+
+          <div class=" row  mt-3 ">
+            <div class="">
+              <button type="submit" name="submit" id="alert2" class="btn-primary Search">Assign</button>
+            </div>
+            <div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-2"></div>
+</div>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+<script>
+  function check_seo(){
+    var chk_seo=document.getElementById("seo").checked;
+    var textarea = document.getElementById('seo_txt');
+    if (chk_seo==true){
+      textarea.style=('display: block');
+    }else{
+  
+      textarea.style=('display: none');
+    }
+  }
+
+  function check_smm(){
+    var chk_smm=document.getElementById("smm").checked;
+    var textarea = document.getElementById('smm_txt');
+    if (chk_smm==true){
+  
+      
+      textarea.style=('display: block');
+    }else{
+    
+      textarea.style=('display: none');
+    }
+  }
+
+  function check_sem(){
+    var chk_sem=document.getElementById("sem").checked;
+    var textarea = document.getElementById('sem_txt');
+    if (chk_sem==true){
+  
+      
+      textarea.style=('display: block');
+    }else{
+    
+      textarea.style=('display: none');
+    }
+  }
+
+      
+
+  function check_em(){
+    var chk_em=document.getElementById("em").checked;
+    var textarea = document.getElementById('em_txt');
+    if (chk_em==true){
+  
+      
+      textarea.style=('display: block');
+    }else{
+    
+      textarea.style=('display: none');
+    }
+  }
+
+  function check_cm(){
+    var chk_cm=document.getElementById("cm").checked;
+    var textarea = document.getElementById('cm_txt');
+    if (chk_cm==true){
+  
+      
+      textarea.style=('display: block');
+    }else{
+    
+      textarea.style=('display: none');
+    }
+  }
+
+  function check_am(){
+    var chk_am=document.getElementById("am").checked;
+    var textarea = document.getElementById('am_txt');
+    if (chk_am==true){
+  
+      
+      textarea.style=('display: block');
+    }else{
+    
+      textarea.style=('display: none');
+    }
+  }
+
+  function check_mm(){
+    var chk_mm=document.getElementById("mm").checked;
+    var textarea = document.getElementById('mm_txt');
+    if (chk_mm==true){
+  
+      
+      textarea.style=('display: block');
+    }else{
+    
+      textarea.style=('display: none');
+    }
+  }
+
+  function check_vm(){
+    var chk_vm=document.getElementById("vm").checked;
+    var textarea = document.getElementById('vm_txt');
+    if (chk_vm==true){
+  
+      
+      textarea.style=('display: block');
+    }else{
+    
+      textarea.style=('display: none');
+    }
+  }
+
+
+</script>
+
+{% endblock %}

@@ -1,0 +1,107 @@
+{%extends 'admin/ad_base.html'%}
+{%load static%}
+{%block content%}
+
+
+<div class="row pt-3" style="background-color: black;">
+  <div class="" style="font-size: 20px;font-weight: 600;color:#6C7293;">PROJECTS</div>
+</div>
+<div class="row mt-4">
+  <div class="card">
+    <div class="card-body">
+      <div class="card-title">Projects</div>
+      <input type="text" class="form-control" id="search" placeholder="search...">
+      <div class="table-responsive">
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col" style="color:#6C7293;">Start Date</th>
+              <th scope="col" style="color:#6C7293;">Task name</th>
+              <th scope="col" style="color:#6C7293;">AssignedTo</th>
+              <th scope="col" style="color:#6C7293;">Description</th>
+              <th scope="col" style="color:#6C7293;">Attached File</th>
+              
+            </tr>
+          </thead>
+          <tbody id="myTable">
+
+            
+           
+              <tr>
+                <td style="color:white;">20-03-2023</td>
+              <td style="color:white;">Seo</td>
+             
+              <td style="color:white;">Raman</td>
+              <td style="color:white;">
+               <p>sdfsdfsdfds sghdajhsdfhsag ashdfgsahgdf adhsafdsahg</p>
+              </td>
+
+              <td class="text-primary"><a href="" data-toggle="modal" data-target="#testerstatus{{dp.id}}"
+                  style="text-decoration: none;">
+                  <div class="badge badge-outline-info">Download</div>
+                </a></td>
+              
+              </tr>
+              <tr>
+                <td style="color:white;">20-03-2023</td>
+                <td style="color:white;">Seo</td>
+               
+                <td style="color:white;">Raman</td>
+                <td style="color:white;">
+                    <p>sdfsdfsdfds sghdajhsdfhsag ashdfgsahgdf adhsafdsahg</p>
+              </td>
+                
+      
+  
+                <td class="text-primary"><a href="" data-toggle="modal" data-target="#testerstatus{{dp.id}}"
+                    style="text-decoration: none;">
+                    <div class="badge badge-outline-info">Download</div>
+                  </a></td>
+                
+                </tr>
+
+                <tr>
+                    <td style="color:white;">20-03-2023</td>
+                    <td style="color:white;">Seo</td>
+                   
+                    <td style="color:white;">Raman</td>
+                    <td style="color:white;">
+                        <p>sdfsdfsdfds sghdajhsdfhsag ashdfgsahgdf adhsafdsahg</p>
+                    </td>
+            
+      
+                    <td class="text-primary"><a href="" data-toggle="modal" data-target="#testerstatus{{dp.id}}"
+                        style="text-decoration: none;">
+                        <div class="badge badge-outline-info">Download</div>
+                      </a></td>
+                    
+                    </tr>
+          </tbody>
+        </table>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+
+
+<script>
+  $(document).ready(function () {
+    $("#search").on("keyup", function () {
+      var value = $(this).val().toLowerCase();
+      $("#myTable tr").filter(function () {
+        $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+      });
+    });
+  });
+</script>
+
+<script type="text/javascript">
+  function setselected(id) {
+    $('input[name="selected"]').val(id);
+  }
+</script>
+
+{% endblock %}
