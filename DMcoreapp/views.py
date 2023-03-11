@@ -43,6 +43,29 @@ def ad_daily_work(request):
 def ad_daily_work_det(request):
     return render(request, 'admin/ad_daily_work_det.html')
 
+def ad_work_analiz(request):
+    return render(request, 'admin/ad_work_analiz.html')
+def ad_work_analiz_ex(request):
+    return render(request, 'admin/ad_work_analiz_ex.html')
+
+def ad_work_analiz_det(request):
+    return render(request, 'admin/ad_work_analiz_det.html')
+
+def ad_work_progress(request):
+    return render(request, 'admin/ad_work_progress.html')
+
+def ad_work_progress_ex(request):
+    return render(request, 'admin/ad_work_progress_ex.html')
+
+def ad_work_progress_det(request):
+    return render(request, 'admin/ad_work_progress_det.html') 
+
+def ad_warning_ex(request):
+    return render(request, 'admin/ad_warning_ex.html')
+
+def ad_warning_det(request):
+    return render(request, 'admin/ad_warning_det.html')
+
 # -----------------------------------------------------------------------------Executive Section
 
 def ex_base(request):
@@ -53,3 +76,28 @@ def ex_profile(request):
 
 def ex_dashboard(request):
     return render(request, 'executive/ex_dashboard.html')
+
+def ex_daily_work_clint(request):
+    return render(request, 'executive/ex_daily_work_clint.html')
+
+def ex_daily_work_det(request):
+    return render(request, 'executive/ex_daily_work_det.html')
+
+def ex_weekly_rep_clint(request):
+    return render(request, 'executive/ex_weekly_rep_clint.html')
+
+def ex_weekly_rep_clint_det(request):
+    return render(request, 'executive/ex_weekly_rep_det.html')
+
+def ex_view_work_clint(request):
+    return render(request, 'executive/ex_view_work_clint.html')
+
+def ex_view_clint_det(request):
+    return render(request, 'executive/ex_view_clint_det.html')
+
+
+def ex_warning(request):
+    return render(request, 'executive/ex_warning.html')
+
+
+    

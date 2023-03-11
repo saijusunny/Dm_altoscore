@@ -13,6 +13,12 @@
     line-height: 2;
 
   }
+  .col-md-4{
+    margin-bottom: 30px;
+  }
+  .col-md-8{
+    margin-bottom: 30px;
+  }
 </style>
 
 
@@ -28,30 +34,41 @@
           {% csrf_token %}
 
           <fieldset>
-            <legend>Clint Information</legend>
+           
             <div class="row pt-1">
               <div class="col-md-4">
-                <div class="mr-2 ml-3 mt-2" style="color:white ;">Client Name </div>
+                <div class="mr-2 ml-3 mt-2" style="color:white ;">Client Name:</div>
               </div>
-              <div class="col-md-8 ">
-                <input type="text" class="drop form-control ml-3 mt-2 text-light" style="border:1px solid #6C7293 ;color:#6C7293;">
+              <div class="col-md-2">
+                <div class="mr-2 ml-3 mt-2" style="color:white ;">:</div>
+              </div>
+              <div class="col-md-6 ">
+                
+                <div class="mr-2 ml-3 mt-2" style="color:white ;">Infox Technologies</div>
               </div>
             </div>
             <div class="row pt-1">
               <div class="col-md-4">
                 <div class=" mr-2 ml-3 mt-2" style="color:white ;">Address</div>
               </div>
-              <div class="col-md-8 ">
-                <textarea name="description" class="drop form-control ml-3 mt-2 text-light" required
-                  style="border:1px solid #6C7293 ;height:70px;"></textarea>
+              <div class="col-md-2">
+                <div class="mr-2 ml-3 mt-2" style="color:white ;">:</div>
+              </div>
+              <div class="col-md-6 ">
+                <div class="mr-2 ml-3 mt-2" style="color:white ;">Infox Technologies,Infoparck Campus, Ground Floor Carnivel Infoparck, Kakkanadu, Kochi, Kerala, 6823121</div>
+                
               </div>
             </div>
             <div class="row pt-1">
               <div class="col-md-4">
                 <div class="mr-2 ml-3 mt-2" style="color:white ;">Mail Id </div>
               </div>
-              <div class="col-md-8 ">
-                <input type="text" class="drop form-control ml-3 mt-2 text-light" style="border:1px solid #6C7293 ;color:#6C7293;">
+              <div class="col-md-2">
+                <div class="mr-2 ml-3 mt-2" style="color:white ;">:</div>
+              </div>
+              <div class="col-md-6 ">
+                <div class="mr-2 ml-3 mt-2" style="color:white ;">saijusunny1301@gmail.com</div>
+                
               </div>
             </div>
           </fieldset>
@@ -59,36 +76,48 @@
             <div class="col-md-4">
               <div class="mr-2 ml-3 mt-2" style="color:white ;">Business Name</div>
             </div>
-            <div class="col-md-8 ">
-              <input type="text" name="subtask" class="drop form-control ml-3 mt-2 text-light" autocomplete="off" required
-                style="border:1px solid #6C7293 ;">
+            <div class="col-md-2">
+              <div class="mr-2 ml-3 mt-2" style="color:white ;">:</div>
+            </div>
+            <div class="col-md-6 ">
+              <div class="mr-2 ml-3 mt-2" style="color:white ;">Infox Technologies</div>
             </div>
           </div>
           <div class="row pt-1">
             <div class="col-md-4">
               <div class="mr-2 ml-3 mt-2" style="color:white ;">Website URL</div>
             </div>
-            <div class="col-md-8 ">
-              <input type="text" class="drop form-control ml-3 mt-2 text-light" style="border:1px solid #6C7293 ;color:#6C7293;">
+            <div class="col-md-2">
+              <div class="mr-2 ml-3 mt-2" style="color:white ;">:</div>
+            </div>
+            <div class="col-md-6 ">
+              <div class="mr-2 ml-3 mt-2" style="color:white ;">www.infoxtechnologies.com</div>
             </div>
           </div>
           <div class="row pt-1">
             <div class="col-md-4">
               <div class=" mr-2 ml-3 mt-2 text-light" style="color:white ;">Location</div>
             </div>
-            <div class="col-md-8 ">
-              <input type="text" class="drop form-control ml-3 mt-2 text-light" style="border:1px solid #6C7293 ;color:#6C7293;">
+            <div class="col-md-2">
+              <div class="mr-2 ml-3 mt-2" style="color:white ;">:</div>
+            </div>
+            <div class="col-md-6 ">
+              <div class="mr-2 ml-3 mt-2" style="color:white ;">Kakkanadu, Kochi, 682312</div>
            
             </div>
           </div>
           
           <div class="row pt-1">
-            <div class="col-md-4">
+            
+            <div class="col-md-4 ">
               <div class="mr-2 ml-3 mt-2" style="color:white ;">Attach Files</div>
             </div>
-            <div class="col-md-8 ">
-              <input type="file" name="files" class="form-control mt-2 "
-                style="text-decoration:none;border:none;background-color: #191c24;color:#6C7293 ;">
+            <div class="col-md-2">
+              <div class="mr-2 ml-3 mt-2" style="color:white ;">:</div>
+            </div>
+            <div class="col-md-6 "style="margin-left: -150px;">
+              
+              <button type="submit" name="submit" id="alert2" class="btn-primary Search" >Download Attach File</button>
             </div>
           </div>
 
@@ -101,8 +130,12 @@
               
             </div>
             <div class="col-md-8 ">
-              <textarea name="seo_txt" id="seo_txt" class="drop form-control ml-3 mt-2 text-light" required
-                style="border:1px solid #6C7293 ;height:70px;" ></textarea>
+              <div>
+                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Earum nobis iste omnis repudiandae blanditiis, voluptatibus vitae beatae, ab, doloribus rem ad! Qui provident esse, minus blanditiis quas adipisci eveniet facere.
+                <button type="submit" name="submit" id="alert2" class="btn-primary Search">Download Attach File</button>
+  
+              </div>
+                
             </div>
             
 
@@ -111,8 +144,12 @@
               <label for="" class="mr-2 ml-3 mt-2" style="color:white ;">SMM</label>
             </div>
             <div class="col-md-8 ">
-              <textarea name="smm_txt" id="smm_txt" class="drop form-control ml-3 mt-2 text-light" required
-                style="border:1px solid #6C7293 ;height:70px"  ></textarea>
+              <div>
+                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Earum nobis iste omnis repudiandae blanditiis, voluptatibus vitae beatae, ab, doloribus rem ad! Qui provident esse, minus blanditiis quas adipisci eveniet facere.
+                <button type="submit" name="submit" id="alert2" class="btn-primary Search">Download Attach File</button>
+  
+              </div>
+                
             </div>
               
             <div class="col-md-4 ">
@@ -120,8 +157,12 @@
               <label for="" class="mr-2 ml-3 mt-2" style="color:white ;">SEM/PPC</label>
             </div>
             <div class="col-md-8 ">
-              <textarea name="sem_txt" id="sem_txt" class="drop form-control ml-3 mt-2 text-light" required
-                style="border:1px solid #6C7293 ;height:70px" ></textarea>
+              <div>
+                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Earum nobis iste omnis repudiandae blanditiis, voluptatibus vitae beatae, ab, doloribus rem ad! Qui provident esse, minus blanditiis quas adipisci eveniet facere.
+                <button type="submit" name="submit" id="alert2" class="btn-primary Search">Download Attach File</button>
+  
+              </div>
+                
             </div>
 
             <div class="col-md-4 ">
@@ -129,8 +170,12 @@
               <label for="" class="mr-2 ml-3 mt-2" style="color:white ;">Email Marketing</label>
             </div>
             <div class="col-md-8 ">
-              <textarea name="em_txt" id="em_txt" name="em_txt" class="drop form-control ml-3 mt-2 text-light" required
-                style="border:1px solid #6C7293 ;height:70px" ></textarea>
+              <div>
+                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Earum nobis iste omnis repudiandae blanditiis, voluptatibus vitae beatae, ab, doloribus rem ad! Qui provident esse, minus blanditiis quas adipisci eveniet facere.
+                <button type="submit" name="submit" id="alert2" class="btn-primary Search">Download Attach File</button>
+  
+              </div>
+                
             </div>
 
             
@@ -139,8 +184,12 @@
               <label for="" class="mr-2 ml-3 mt-2" style="color:white ;">Content Marketing</label>
             </div>
             <div class="col-md-8 ">
-              <textarea name="cm_txt" id="cm_txt" class="drop form-control ml-3 mt-2 text-light" required
-                style="border:1px solid #6C7293 ;height:70px" ></textarea>
+              <div>
+                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Earum nobis iste omnis repudiandae blanditiis, voluptatibus vitae beatae, ab, doloribus rem ad! Qui provident esse, minus blanditiis quas adipisci eveniet facere.
+                <button type="submit" name="submit" id="alert2" class="btn-primary Search">Download Attach File</button>
+  
+              </div>
+                
             </div>
 
 
@@ -149,8 +198,12 @@
               <label for="" class="mr-2 ml-3 mt-2" style="color:white ;">Affiliate Marketing</label>
             </div>
             <div class="col-md-8 ">
-              <textarea name="am_txt" id="am_txt" class="drop form-control ml-3 mt-2 text-light" required
-                style="border:1px solid #6C7293 ;height:70px" ></textarea>
+              <div>
+                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Earum nobis iste omnis repudiandae blanditiis, voluptatibus vitae beatae, ab, doloribus rem ad! Qui provident esse, minus blanditiis quas adipisci eveniet facere.
+                <button type="submit" name="submit" id="alert2" class="btn-primary Search">Download Attach File</button>
+  
+              </div>
+                
             </div>
               
             <div class="col-md-4 ">
@@ -158,8 +211,12 @@
               <label for="" class="mr-2 ml-3 mt-2" style="color:white ;">Mobile marketing</label>
             </div>
             <div class="col-md-8 ">
-              <textarea name="mm_txt" id="mm_txt" class="drop form-control ml-3 mt-2 text-light" required
-                style="border:1px solid #6C7293 ;height:70px; " ></textarea>
+              <div>
+                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Earum nobis iste omnis repudiandae blanditiis, voluptatibus vitae beatae, ab, doloribus rem ad! Qui provident esse, minus blanditiis quas adipisci eveniet facere.
+                <button type="submit" name="submit" id="alert2" class="btn-primary Search">Download Attach File</button>
+  
+              </div>
+                
             </div>
 
             <div class="col-md-4 ">
@@ -167,8 +224,12 @@
               <label for="" class="mr-2 ml-3 mt-2" style="color:white ;">Video Marketing</label>
             </div>
             <div class="col-md-8 ">
-              <textarea name="vm_txt" id="vm_txt" class="drop form-control ml-3 mt-2 text-light" required
-                style="border:1px solid #6C7293 ;height:70px;" ></textarea>
+              <div>
+                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Earum nobis iste omnis repudiandae blanditiis, voluptatibus vitae beatae, ab, doloribus rem ad! Qui provident esse, minus blanditiis quas adipisci eveniet facere.
+                <button type="submit" name="submit" id="alert2" class="btn-primary Search">Download Attach File</button>
+  
+              </div>
+                
             </div>
            
             </div>
