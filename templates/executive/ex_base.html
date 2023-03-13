@@ -55,12 +55,12 @@
                     <div class="profile-desc">
                         <div class="profile-pic">
                             <div class="count-indicator">
-                                <img class="img-xs rounded-circle " src="" alt="">
+                                <img class="img-xs rounded-circle " src="{% static 'avatar-7.png'%}" alt="">
                                 <span class="count bg-success"></span>
                             </div>
                             <div class="profile-name">
-                                <h5 class="mb-0 font-weight-normal">user.fullname</h5>
-                                <span>user.designation.designation</span>
+                                <h5 class="mb-0 font-weight-normal">Arun</h5>
+                                <span>Developer</span>
                             </div>
                         </div>
                         <a href="#" id="profile-dropdown" data-bs-toggle="dropdown"><i
@@ -97,7 +97,7 @@
                     <span class="nav-link">Navigation</span>
                 </li>
                 <li class="nav-item menu-items">
-                    <a class="nav-link" href="{% url 'ad_profile' %}">
+                    <a class="nav-link" href="{% url 'ex_profile' %}">
                         <span class="menu-icon">
                             <i class="mdi mdi-file-document-box"></i>
                         </span>
@@ -113,11 +113,11 @@
                     </a>
                 </li>
                 <li class="nav-item menu-items">
-                    <a class="nav-link" href="{% url 'ex_warning'%}">
+                    <a class="nav-link" href="{% url 'ex_warnings_dash'%}">
                         <span class="menu-icon">
                             <i class="mdi mdi-file-document-box"></i>
                         </span>
-                        <span class="menu-title">Warnings & Suggetions</span>
+                        <span class="menu-title">Warnings & Suggestions</span>
                     </a>
                 </li>
                 
@@ -144,8 +144,8 @@
                         <li class="nav-item dropdown">
                             <a class="nav-link" id="profileDropdown" href="#" data-bs-toggle="dropdown">
                                 <div class="navbar-profile">
-                                    <img class="img-xs rounded-circle" src="" alt="">
-                                    <p class="mb-0 d-none d-sm-block navbar-profile-name">user.fullname</p>
+                                    <img class="img-xs rounded-circle" src="{% static 'avatar-7.png'%}" alt="">
+                                    <p class="mb-0 d-none d-sm-block navbar-profile-name">Arun</p>
                                     <i class="mdi mdi-menu-down d-none d-sm-block"></i>
                                 </div>
                             </a>

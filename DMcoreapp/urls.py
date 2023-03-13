@@ -14,17 +14,17 @@ urlpatterns = [
     path('ad_create_work', views.ad_create_work, name='ad_create_work'),
     path('ad_view_work', views.ad_view_work, name='ad_view_work'),
     path('ad_view_clint', views.ad_view_clint, name='ad_view_clint'),
-    path('ad_daily_work', views.ad_daily_work, name='ad_daily_work'),
+  
     path('ad_daily_work_det', views.ad_daily_work_det, name='ad_daily_work_det'),
-    path('ad_work_analiz', views.ad_work_analiz, name='ad_work_analiz'),
-    path('ad_work_analiz_ex', views.ad_work_analiz_ex, name='ad_work_analiz_ex'),
+  
     path('ad_work_analiz_det', views.ad_work_analiz_det, name='ad_work_analiz_det'),
     path('ad_work_progress', views.ad_work_progress, name='ad_work_progress'),
-    path('ad_work_progress_ex', views.ad_work_progress_ex, name='ad_work_progress_ex'),
+
     path('ad_work_progress_det', views.ad_work_progress_det, name='ad_work_progress_det'),
     path('ad_warning_ex', views.ad_warning_ex, name='ad_warning_ex'),
+    path('ad_warning_sugg_dash', views.ad_warning_sugg_dash, name='ad_warning_sugg_dash'),
     path('ad_warning_det', views.ad_warning_det, name='ad_warning_det'),
-    #---------------------------------------------------------------------------Executive Section
+    path('ad_suggestions_det', views.ad_suggestions_det, name='ad_suggestions_det'),    #---------------------------------------------------------------------------Executive Section
     path('ex_base', views.ex_base, name='ex_base'),
     path('ex_profile', views.ex_profile, name='ex_profile'),
     path('ex_dashboard', views.ex_dashboard, name='ex_dashboard'), 
@@ -35,5 +35,7 @@ urlpatterns = [
     path('ex_view_work_clint', views.ex_view_work_clint, name='ex_view_work_clint'),
     path('ex_view_clint_det', views.ex_view_clint_det, name='ex_view_clint_det'),  
     path('ex_warning', views.ex_warning, name='ex_warning'),
+    path('ex_warnings_dash', views.ex_warnings_dash, name='ex_warnings_dash'),
+    path('ex_suggestions', views.ex_suggestions, name='ex_suggestions'),
     
 ]

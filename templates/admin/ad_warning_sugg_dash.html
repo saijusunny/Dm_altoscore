@@ -1,4 +1,4 @@
-{%extends 'executive/ex_base.html'%}
+{%extends 'admin/ad_base.html'%}
 <!-- DEVprojects -->
 {%load static%}
 {%block content%}
@@ -9,7 +9,7 @@
 
 <div class="row pt-3">
   <div class="" style="font-size: 20px;font-weight: 600;color:#6C7293;">
-    Client
+    Warnings & Suggestion
   </div>
 </div>
 
@@ -17,13 +17,13 @@
 
     <div class="col-lg-4 col-md-4 col-sm-12 mt-2">
       <div class="card">
-        <a href="{% url 'ex_view_clint_det'%}" class="text-decoration-none text-white ">
+        <a href="{% url 'ad_warning_det'%}" class="text-decoration-none text-white ">
           <div class="card-body">
             <div class="row">
               <div class="col-8 col-sm-12 col-xl-8 my-auto">
                 <div class="d-flex d-sm-block d-md-flex align-items-center">
                   
-                      <h4 class="mb-0" style="color:white;">Altos Technologies</h4>
+                      <h4 class="mb-0" style="color:white;">Warnings</h4>
   
                 </div>
               </div>
@@ -42,13 +42,13 @@
 
     <div class="col-lg-4 col-md-4 col-sm-12 mt-2">
       <div class="card">
-        <a href="{% url 'ex_view_clint_det'%}" class="text-decoration-none text-white ">
+        <a href="{% url 'ad_suggestions_det'%}" class="text-decoration-none text-white ">
           <div class="card-body">
             <div class="row">
               <div class="col-8 col-sm-12 col-xl-8 my-auto">
                 <div class="d-flex d-sm-block d-md-flex align-items-center">
                   
-                      <h4 class="mb-0" style="color:white;">Infox Technologies</h4>
+                      <h4 class="mb-0" style="color:white;">Suggestions</h4>
   
                 </div>
               </div>

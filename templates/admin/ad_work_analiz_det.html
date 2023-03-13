@@ -4,23 +4,77 @@
 
 
 <div class="row pt-3" style="background-color: black;">
-  <div class="" style="font-size: 20px;font-weight: 600;color:#6C7293;">PROJECTS</div>
+  <div class="" style="font-size: 20px;font-weight: 600;color:#6C7293;">Work Analiz</div>
 </div>
 <div class="row mt-4">
   <div class="card">
     <div class="card-body">
-      <div class="card-title">Projects</div> 
+      <div class="card-title"></div> 
       <div style="text-align: right;">
         <a href="" data-toggle="modal" data-target="#flt_date"
                     style="text-decoration: none;"><button type="submit" name="submit" id="alert2" class="btn-primary Search" >Filter By Date</button></a><br><br>
       </div>
-      <input type="text" class="form-control" id="search" placeholder="search...">
+      <div class="row mt-3 mb-3" >
+        <div class="col-sm-3">
+          <div class="row">
+            <div class="col-sm-10">
+              <input type="text" class="form-control search" id="search" placeholder="Search by Date...">
+            </div>
+            <div class="col-sm-2" style="margin-left: -20px;">
+              <button type="button" class="btn btn-light" style="height: 38px;">
+                <img src="{% static 'assets\images\icon\search.svg'%}" >
+              </button>
+            </div>
+          </div>
+         
+        </div>
+        <div class="col-sm-3">
+          <div class="row">
+            <div class="col-sm-10">
+              <input type="text" class="form-control " id="search_cl" placeholder="Search by Client...">
+            </div>
+            <div class="col-sm-2" style="margin-left: -20px;">
+              <button type="button" class="btn btn-light" style="height: 38px;">
+                <img src="{% static 'assets\images\icon\search.svg'%}" >
+              </button>
+            </div>
+          </div>
+          
+        </div>
+        <div class="col-sm-3">
+          <div class="row">
+            <div class="col-sm-10">
+              <input type="text" class="form-control " id="search_ts" placeholder="Search by Task...">
+            </div>
+            <div class="col-sm-2" style="margin-left: -20px;">
+              <button type="button" class="btn btn-light" style="height: 38px;">
+                <img src="{% static 'assets\images\icon\search.svg'%}" >
+              </button>
+            </div>
+          </div>
+          
+        </div>
+        <div class="col-sm-3">
+          <div class="row">
+            <div class="col-sm-10">
+              <input type="text" class="form-control " id="search_ex" placeholder="Search By Executive ...">
+            </div>
+            <div class="col-sm-2" style="margin-left: -20px;">
+              <button type="button" class="btn btn-light" style="height: 38px;">
+                <img src="{% static 'assets\images\icon\search.svg'%}" >
+              </button>
+            </div>
+          </div>
+          
+        </div>
+      </div>
       <div class="table-responsive">
         <table class="table">
           <thead>
             <tr>
               <th scope="col" style="color:#6C7293;">Date</th>
-              <th scope="col" style="color:#6C7293;">Task name</th>
+              <th scope="col" style="color:#6C7293;">Client Name</th>
+              <th scope="col" style="color:#6C7293;">Task Name</th>
               <th scope="col" style="color:#6C7293;">AssignedTo</th>
               <th scope="col" style="color:#6C7293;">Description</th>
               <th scope="col" style="color:#6C7293;">Attached File</th>
@@ -33,6 +87,7 @@
            
               <tr>
                 <td style="color:white;">20-03-2023</td>
+                <td style="color:white;">Altos Technologies</td>
               <td style="color:white;">Seo</td>
              
               <td style="color:white;">Raman</td>
@@ -48,9 +103,10 @@
               </tr>
               <tr>
                 <td style="color:white;">20-03-2023</td>
-                <td style="color:white;">Seo</td>
+                <td style="color:white;">Infox Technologies</td>
+                <td style="color:white;">Sem</td>
                
-                <td style="color:white;">Raman</td>
+                <td style="color:white;">Arjun</td>
                 <td style="color:white;">
                     <p>sdfsdfsdfds sghdajhsdfhsag ashdfgsahgdf adhsafdsahg</p>
               </td>
@@ -66,9 +122,10 @@
 
                 <tr>
                     <td style="color:white;">20-03-2023</td>
-                    <td style="color:white;">Seo</td>
+                    <td style="color:white;">Reddit Technologies</td>
+                    <td style="color:white;">Smm</td>
                    
-                    <td style="color:white;">Raman</td>
+                    <td style="color:white;">kannan</td>
                     <td style="color:white;">
                         <p>sdfsdfsdfds sghdajhsdfhsag ashdfgsahgdf adhsafdsahg</p>
                     </td>
@@ -149,6 +206,30 @@
 <script>
   $(document).ready(function () {
     $("#search").on("keyup", function () {
+      var value = $(this).val().toLowerCase();
+      $("#myTable tr").filter(function () {
+        $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+      });
+    });
+  });
+  $(document).ready(function () {
+    $("#search_cl").on("keyup", function () {
+      var value = $(this).val().toLowerCase();
+      $("#myTable tr").filter(function () {
+        $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+      });
+    });
+  });
+  $(document).ready(function () {
+    $("#search_ts").on("keyup", function () {
+      var value = $(this).val().toLowerCase();
+      $("#myTable tr").filter(function () {
+        $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+      });
+    });
+  });
+  $(document).ready(function () {
+    $("#search_ex").on("keyup", function () {
       var value = $(this).val().toLowerCase();
       $("#myTable tr").filter(function () {
         $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)

@@ -37,16 +37,9 @@ def ad_view_clint(request):
     return render(request, 'admin/ad_view_clint.html')
 
 
-def ad_daily_work(request):
-    return render(request, 'admin/ad_daily_work.html')
-
 def ad_daily_work_det(request):
     return render(request, 'admin/ad_daily_work_det.html')
 
-def ad_work_analiz(request):
-    return render(request, 'admin/ad_work_analiz.html')
-def ad_work_analiz_ex(request):
-    return render(request, 'admin/ad_work_analiz_ex.html')
 
 def ad_work_analiz_det(request):
     return render(request, 'admin/ad_work_analiz_det.html')
@@ -54,8 +47,7 @@ def ad_work_analiz_det(request):
 def ad_work_progress(request):
     return render(request, 'admin/ad_work_progress.html')
 
-def ad_work_progress_ex(request):
-    return render(request, 'admin/ad_work_progress_ex.html')
+
 
 def ad_work_progress_det(request):
     return render(request, 'admin/ad_work_progress_det.html') 
@@ -63,8 +55,14 @@ def ad_work_progress_det(request):
 def ad_warning_ex(request):
     return render(request, 'admin/ad_warning_ex.html')
 
+def ad_warning_sugg_dash(request):
+    return render(request, 'admin/ad_warning_sugg_dash.html')
+
 def ad_warning_det(request):
-    return render(request, 'admin/ad_warning_det.html')
+    return render(request, 'admin/ad_warning_det.html') 
+
+def ad_suggestions_det(request):
+    return render(request, 'admin/ad_suggestions_det.html')
 
 # -----------------------------------------------------------------------------Executive Section
 
@@ -95,9 +93,15 @@ def ex_view_work_clint(request):
 def ex_view_clint_det(request):
     return render(request, 'executive/ex_view_clint_det.html')
 
+def ex_warnings_dash(request):
+    return render(request, 'executive/ex_warnings_dash.html') 
+
 
 def ex_warning(request):
     return render(request, 'executive/ex_warning.html')
+
+def ex_suggestions(request):
+    return render(request, 'executive/ex_suggestions.html')
 
 
     
