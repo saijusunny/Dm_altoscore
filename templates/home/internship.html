@@ -137,7 +137,7 @@ input[type=number] {
     <div class="row px-4">
       <div class="col-md-3"></div>
       <div class="col-md-6  mt-5 mb-5" style="border-radius: 8px;background-color:  #191c24;">
-        <form method="post" id="alert1" action="#" enctype="multipart/form-data">
+        <form method="post" id="alert1" action="{% url 'internship_save'%}" enctype="multipart/form-data">
           {% csrf_token %}
           <center>
             <div class="mt-5" style="font-size:25px;font-weight: bolder;color: white;">INTERNSHIP REGISTRATION</div>

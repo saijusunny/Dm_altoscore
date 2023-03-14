@@ -149,7 +149,7 @@
         <h2 style="color: white;text-align: center;">Registration Form</h2>
         <br>
         <br>
-        <form method="post" action="" autocomplete="off" enctype="multipart/form-data">
+        <form method="post" action="{% url 'registration_form'%}" autocomplete="off" enctype="multipart/form-data">
             {% csrf_token %}
             <div id="form1" class="form-group">
                 <!--<label id="label">Basic Info</label><br><br>-->
@@ -173,21 +173,21 @@
                 <label>Alternative Number</label>
                 <input type="tel" maxlength="12" class="form-control" name="alternative" required>
                  <label>Department</label>                        
-                                <select class="form-control" name="department" required style="background:transparent;border: 1px solid #636d87;color:white;">
-                                    
-                                    <option value="" >-Select An Option-</option>
-                                    {% for i in depart %}
-                                    <option value="{{i.id}}">{{i.department}}</option>
-                                    {% endfor %}
-                                   
-                                  </select>                  
+                <select class="form-control" name="department" required style="background:transparent;border: 1px solid #636d87;color:white;"> 
+                    
+                    <option value="" >-Select An Option-</option>
+                    <option value="Hr">Admin</option>
+                    <option value="Digital Marketing Head">Digital Marketing Head</option>
+                    <option value="Digital Marketing Executive">Digital Marketing Executive</option>
+                    
+                    
+                    </select>  
+                    <label>Designation</label>   
+                    <input type="text" class="form-control" name="designation" style="background:transparent;border: 1px solid #636d87;color:white;" required>                     
+                                  
                 <label>Email </label>
                 <input type="email" class="form-control" name="email" required>
-                <!--<label>Password </label>-->
-                <!--<input type="password" class="form-control" name="password" id="pass" required>-->
-                <!--<label>Confirm Password</label>-->
-                <!--<input type="password" class="form-control" name="conpassword" id="conpassword" required>-->
-                <!--<span id='message'></span>-->
+               
                 <br>
                 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 //      <script>

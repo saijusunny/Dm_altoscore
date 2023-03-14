@@ -19,7 +19,7 @@
   }
 </style>
 
-
+ 
 <div class="row " style="background-color: black;">
   <div class="" style="font-size: 20px;font-weight: 600;color:#6C7293 ;">Create Work</div>
 </div>
@@ -28,7 +28,7 @@
   <div class="col-md-8">
     <div class="card">
       <div class="card-body">
-        <form action="" method="post" enctype="multipart/form-data">
+        <form action="{% url 'save_create_work'%}" method="post" enctype="multipart/form-data">
           {% csrf_token %}
 
           <fieldset id="clint_info">
@@ -38,7 +38,7 @@
                 <div class="mr-2 ml-3 mt-2" style="color:white ;">Client Name </div>
               </div>
               <div class="col-md-8 ">
-                <input type="text" class="drop form-control ml-3 mt-2 text-light" style="border:1px solid #6C7293 ;color:#6C7293;">
+                <input type="text" class="drop form-control ml-3 mt-2 text-light" style="border:1px solid #6C7293 ;color:#6C7293;" name="client_name">
                 <button class="btn btn-light mt-2" id="add_info_row">+</button>
               </div>
             </div>
@@ -47,8 +47,8 @@
                 <div class=" mr-2 ml-3 mt-2" style="color:white ;">Address</div>
               </div>
               <div class="col-md-8 ">
-                <textarea name="description" class="drop form-control ml-3 mt-2 text-light" required
-                  style="border:1px solid #6C7293 ;height:70px;"></textarea>
+                <textarea name="client_address" class="drop form-control ml-3 mt-2 text-light" 
+                  style="border:1px solid #6C7293 ;height:70px;" ></textarea>
               </div>
             </div>
             <div class="row pt-1">
@@ -56,7 +56,7 @@
                 <div class="mr-2 ml-3 mt-2" style="color:white ;">Mail Id </div>
               </div>
               <div class="col-md-8 ">
-                <input type="text" class="drop form-control ml-3 mt-2 text-light" style="border:1px solid #6C7293 ;color:#6C7293;">
+                <input type="text" class="drop form-control ml-3 mt-2 text-light" name="client_mail" style="border:1px solid #6C7293 ;color:#6C7293;">
               </div>
             </div>
           </fieldset>
@@ -68,7 +68,7 @@
                 <div class="mr-2 ml-3 mt-2" style="color:white ;">Business Name</div>
               </div>
               <div class="col-md-8 ">
-                <input type="text" name="subtask" class="drop form-control ml-3 mt-2 text-light" autocomplete="off" required
+                <input type="text" name="bs_name" class="drop form-control ml-3 mt-2 text-light" autocomplete="off" 
                   style="border:1px solid #6C7293 ;">
                   <button class="btn btn-light mt-2" id="add_bis_row">+</button>
               </div>
@@ -78,7 +78,7 @@
                 <div class="mr-2 ml-3 mt-2" style="color:white ;">Website URL</div>
               </div>
               <div class="col-md-8 ">
-                <input type="text" class="drop form-control ml-3 mt-2 text-light" style="border:1px solid #6C7293 ;color:#6C7293;">
+                <input type="text" class="drop form-control ml-3 mt-2 text-light" name="bs_website" style="border:1px solid #6C7293 ;color:#6C7293;">
               </div>
             </div>
             <div class="row pt-1">
@@ -86,7 +86,7 @@
                 <div class=" mr-2 ml-3 mt-2 text-light" style="color:white ;">Location</div>
               </div>
               <div class="col-md-8 ">
-                <input type="text" class="drop form-control ml-3 mt-2 text-light" style="border:1px solid #6C7293 ;color:#6C7293;">
+                <input type="text" class="drop form-control ml-3 mt-2 text-light" name="bs_location" style="border:1px solid #6C7293 ;color:#6C7293;">
             
               </div>
             </div>
@@ -95,7 +95,7 @@
                 <div class="mr-2 ml-3 mt-2" style="color:white ;">Attach Files</div>
               </div>
               <div class="col-md-8 ">
-                <input type="file" name="files" class="form-control mt-2 "
+                <input type="file" name="client_files" class="form-control mt-2 "
                   style="text-decoration:none;border:none;background-color: #191c24;color:#6C7293 ;">
               </div>
             </div>
@@ -115,7 +115,7 @@
               
             </div>
             <div class="col-md-8 ">
-              <textarea name="seo_txt" id="seo_txt" class="drop form-control ml-3 mt-2 text-light" required
+              <textarea name="seo_txt" id="seo_txt" class="drop form-control ml-3 mt-2 text-light" 
                 style="border:1px solid #6C7293 ;height:70px; display: none;" ></textarea>
                 <input type="file" name="seo_file" id="seo_file" class="form-control mt-2 "
                 style="text-decoration:none;border:none;background-color: #191c24;color:#6C7293 ;display: none;">
@@ -127,7 +127,7 @@
               <label for="" class="mr-2 ml-3 mt-2" style="color:white ;">SMM</label>
             </div>
             <div class="col-md-8 ">
-              <textarea name="smm_txt" id="smm_txt" class="drop form-control ml-3 mt-2 text-light" required
+              <textarea name="smm_txt" id="smm_txt" class="drop form-control ml-3 mt-2 text-light" 
                 style="border:1px solid #6C7293 ;height:70px;display: none;"  ></textarea>
                 <input type="file" name="smm_file" id="smm_file" class="form-control mt-2 "
                 style="text-decoration:none;border:none;background-color: #191c24;color:#6C7293 ;display: none;">
@@ -138,7 +138,7 @@
               <label for="" class="mr-2 ml-3 mt-2" style="color:white ;">SEM/PPC</label>
             </div>
             <div class="col-md-8 ">
-              <textarea name="sem_txt" id="sem_txt" class="drop form-control ml-3 mt-2 text-light" required
+              <textarea name="sem_txt" id="sem_txt" class="drop form-control ml-3 mt-2 text-light" 
                 style="border:1px solid #6C7293 ;height:70px;display: none;" ></textarea>
                 <input type="file" name="sem_file" id="sem_file" class="form-control mt-2 "
                 style="text-decoration:none;border:none;background-color: #191c24;color:#6C7293 ;display: none;">
@@ -149,7 +149,7 @@
               <label for="" class="mr-2 ml-3 mt-2" style="color:white ;">Email Marketing</label>
             </div>
             <div class="col-md-8 ">
-              <textarea name="em_txt" id="em_txt" name="em_txt" class="drop form-control ml-3 mt-2 text-light" required
+              <textarea name="em_txt" id="em_txt" name="em_txt" class="drop form-control ml-3 mt-2 text-light" 
                 style="border:1px solid #6C7293 ;height:70px;display: none;" ></textarea>
                 <input type="file" name="em_file" id="em_file" class="form-control mt-2 "
                 style="text-decoration:none;border:none;background-color: #191c24;color:#6C7293 ;display: none;">
@@ -161,7 +161,7 @@
               <label for="" class="mr-2 ml-3 mt-2" style="color:white ;">Content Marketing</label>
             </div>
             <div class="col-md-8 ">
-              <textarea name="cm_txt" id="cm_txt" class="drop form-control ml-3 mt-2 text-light" required
+              <textarea name="cm_txt" id="cm_txt" class="drop form-control ml-3 mt-2 text-light" 
                 style="border:1px solid #6C7293 ;height:70px;display: none;" ></textarea>
                 <input type="file" name="cm_file" id="cm_file" class="form-control mt-2 "
                 style="text-decoration:none;border:none;background-color: #191c24;color:#6C7293 ;display: none;">
@@ -173,7 +173,7 @@
               <label for="" class="mr-2 ml-3 mt-2" style="color:white ;">Affiliate Marketing</label>
             </div>
             <div class="col-md-8 ">
-              <textarea name="am_txt" id="am_txt" class="drop form-control ml-3 mt-2 text-light" required
+              <textarea name="am_txt" id="am_txt" class="drop form-control ml-3 mt-2 text-light" 
                 style="border:1px solid #6C7293 ;height:70px;display: none;" ></textarea>
                 <input type="file" name="am_file" id="am_file" class="form-control mt-2 "
                 style="text-decoration:none;border:none;background-color: #191c24;color:#6C7293 ;display: none;">
@@ -184,7 +184,7 @@
               <label for="" class="mr-2 ml-3 mt-2" style="color:white ;">Mobile marketing</label>
             </div>
             <div class="col-md-8 ">
-              <textarea name="mm_txt" id="mm_txt" class="drop form-control ml-3 mt-2 text-light" required
+              <textarea name="mm_txt" id="mm_txt" class="drop form-control ml-3 mt-2 text-light" 
                 style="border:1px solid #6C7293 ;height:70px; display: none;" ></textarea>
                 <input type="file" name="mm_file" id="mm_file" class="form-control mt-2 "
                 style="text-decoration:none;border:none;background-color: #191c24;color:#6C7293 ;display: none;">
@@ -195,7 +195,7 @@
               <label for="" class="mr-2 ml-3 mt-2" style="color:white ;">Video Marketing</label>
             </div>
             <div class="col-md-8 ">
-              <textarea name="vm_txt" id="vm_txt" class="drop form-control ml-3 mt-2 text-light" required
+              <textarea name="vm_txt" id="vm_txt" class="drop form-control ml-3 mt-2 text-light" 
                 style="border:1px solid #6C7293 ;height:70px;display: none;" ></textarea>
                 <input type="file" name="vm_file" id="vm_file" class="form-control mt-2 "
                 style="text-decoration:none;border:none;background-color: #191c24;color:#6C7293 ;display: none;">
@@ -213,7 +213,7 @@
 
           <div class=" row  mt-3 ">
             <div class="">
-              <button type="submit" name="submit" id="alert2" class="btn-primary Search">Create</button>
+              <button type="submit" name="submit"  class="btn-primary">Create</button>
             </div>
             <div>
         </form>
@@ -412,7 +412,7 @@
               </div>
               <div class="col-md-8 ">
                 
-                <textarea name="mm_txt" id="mm_txt" class="drop form-control ml-3 mt-2 text-light" required
+                <textarea name="mm_txt" id="mm_txt" class="drop form-control ml-3 mt-2 text-light" 
                 style="border:1px solid #6C7293 ;color:#6C7293;" ></textarea>
                 <input type="file" name="vm_file" id="vm_file" class="form-control mt-2 "
                 style="text-decoration:none;border:none;background-color: #191c24;color:#6C7293 ">
@@ -424,5 +424,20 @@
     });
   });
 </script>
+{% if msg_error %}
+<script>
+
+  Swal.fire({
+      position: 'center',
+      icon: 'success',
+      text: '{{ msg_success }}',
+      showConfirmButton: false,
+      timer: 3000
+  }).then(function () {
+      javascript: history.go(-2);
+  })
+  
+</script>
+{% endif %}
 
 {% endblock %}

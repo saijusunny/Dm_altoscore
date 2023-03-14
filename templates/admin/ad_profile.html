@@ -10,7 +10,7 @@
 
                 <center>
                     <h3 class="card-title">PROFILE</h3>
-                    <img src="{% static 'avatar-7.png'%}" alt="image" style="border-radius: 50%;" width="130" height="130" />
+                    <img src="{{usr.photo.url}}" alt="image" style="border-radius: 50%;" width="130" height="130" />
 
                     <!-- <canvas id="transaction-history" class="transaction-chart"></canvas> -->
                     <div class="bg-gray-dark d-flex d-md-block d-xl-flex flex-row py-3 px-4 px-md-3 px-xl-4 rounded mt-3">
@@ -20,7 +20,7 @@
                             <!-- <p class="text-muted mb-0">07 Jan 2019, 09:12AM</p> -->
                         </div>
                         <div class="align-self-center flex-grow text-right text-md-center text-xl-right py-md-2 py-xl-0">
-                            <h6 class="text-muted mb-0">20-02-2023</h6>
+                            <h6 class="text-muted mb-0">{{usr.joiningdate|date:"d-m-Y"}}</h6>
                         </div>
                     </div>
                     <div class="bg-gray-dark d-flex d-md-block d-xl-flex flex-row py-3 px-4 px-md-3 px-xl-4 rounded mt-3">
@@ -29,7 +29,7 @@
                             <!-- <p class="text-muted mb-0">07 Jan 2019, 09:12AM</p> -->
                         </div>
                         <div class="align-self-center flex-grow text-right text-md-center text-xl-right py-md-2 py-xl-0">
-                            <h6 class="text-muted mb-0">Developer</h6>
+                            <h6 class="text-muted mb-0">{{usr.designation}}</h6>
                         </div>
                     </div>
                 </center>
@@ -59,7 +59,7 @@
                                     <div class="me-auto text-sm-right pt-2 pt-sm-0">
                                         <!-- <p class="text-muted">15 minutes ago</p>
                       <p class="text-muted mb-0">30 tasks, 5 issues </p> -->
-                                        <h6 class="preview-subject">Saiju sunny</h6>
+                                        <h6 class="preview-subject">{{usr.fullname}}</h6>
                                     </div>
                                 </div>
                             </div>
@@ -77,7 +77,7 @@
                                     <div class="me-auto text-sm-right pt-2 pt-sm-0">
                                         <!-- <p class="text-muted">1 hour ago</p>
                       <p class="text-muted mb-0">23 tasks, 5 issues </p> -->
-                                        <h6 class="preview-subject">python</h6>
+                                        <h6 class="preview-subject">{{usr.department}}</h6>
                                     </div>
                                 </div>
                             </div>
@@ -95,7 +95,7 @@
                                     <div class="me-auto text-sm-right pt-2 pt-sm-0">
                                         <!-- <p class="text-muted">35 minutes ago</p>
                       <p class="text-muted mb-0">15 tasks, 2 issues</p> -->
-                                        <h6 class="preview-subject">saijusunny1301@gmail.com</h6>
+                                        <h6 class="preview-subject">{{usr.email}}</h6>
                                     </div>
                                 </div>
                             </div>
@@ -113,7 +113,7 @@
                                     <div class="me-auto text-sm-right pt-2 pt-sm-0">
                                         <!-- <p class="text-muted">55 minutes ago</p>
                       <p class="text-muted mb-0">35 tasks, 7 issues </p> -->
-                                        <h6 class="preview-subject">8782467595</h6>
+                                        <h6 class="preview-subject">{{usr.mobile}}</h6>
                                     </div>
                                 </div>
                             </div>
