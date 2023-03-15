@@ -65,7 +65,7 @@
               </div>
               <div class="col-md-6 ">
                 
-                <div class="mr-2 ml-3 mt-2" style="color:white ;">Infox Technologies</div>
+                <div class="mr-2 ml-3 mt-2" style="color:white ;">{{client.client_name}}</div>
               </div>
             </div>
             <div class="row pt-1">
@@ -76,7 +76,7 @@
                 <div class="mr-2 ml-3 mt-2" style="color:white ;">:</div>
               </div>
               <div class="col-md-6 ">
-                <div class="mr-2 ml-3 mt-2" style="color:white ;">Infox Technologies,Infoparck Campus, Ground Floor Carnivel Infoparck, Kakkanadu, Kochi, Kerala, 6823121</div>
+                <div class="mr-2 ml-3 mt-2" style="color:white ;">{{client.client_address}}</div>
                 
               </div>
             </div>
@@ -88,10 +88,26 @@
                 <div class="mr-2 ml-3 mt-2" style="color:white ;">:</div>
               </div>
               <div class="col-md-6 ">
-                <div class="mr-2 ml-3 mt-2" style="color:white ;">saijusunny1301@gmail.com</div>
+                <div class="mr-2 ml-3 mt-2" style="color:white ;">{{client.client_mail}}</div>
                 
               </div>
             </div>
+            {% for i in addicl %}
+            <div class="row pt-1">
+              <div class="col-md-4">
+                <div class="mr-2 ml-3 mt-2" style="color:white ;">{{i.labels}}</div>
+              </div>
+              <div class="col-md-2">
+                <div class="mr-2 ml-3 mt-2" style="color:white ;">:</div>
+              </div>
+              <div class="col-md-6 ">
+                <div class="mr-2 ml-3 mt-2" style="color:white ;">{{i.discription}}</div>
+                
+              </div>
+            </div>
+            {%endfor%}
+
+
           </fieldset>
           <fieldset>
             <legend>Business Information</legend>
@@ -104,7 +120,7 @@
               <div class="mr-2 ml-3 mt-2" style="color:white ;">:</div>
             </div>
             <div class="col-md-6 ">
-              <div class="mr-2 ml-3 mt-2" style="color:white ;">Infox Technologies</div>
+              <div class="mr-2 ml-3 mt-2" style="color:white ;">{{client.bs_name}}</div>
             </div>
           </div>
           <div class="row pt-1">
@@ -115,7 +131,7 @@
               <div class="mr-2 ml-3 mt-2" style="color:white ;">:</div>
             </div>
             <div class="col-md-6 ">
-              <div class="mr-2 ml-3 mt-2" style="color:white ;">www.infoxtechnologies.com</div>
+              <div class="mr-2 ml-3 mt-2" style="color:white ;">{{client.bs_website}}</div>
             </div>
           </div>
           <div class="row pt-1">
@@ -126,44 +142,110 @@
               <div class="mr-2 ml-3 mt-2" style="color:white ;">:</div>
             </div>
             <div class="col-md-6 ">
-              <div class="mr-2 ml-3 mt-2" style="color:white ;">Kakkanadu, Kochi, 682312</div>
+              <div class="mr-2 ml-3 mt-2" style="color:white ;">{{client.bs_location}}</div>
            
             </div>
           </div>
+
+          {% for j in addibs %}
+            <div class="row pt-1">
+              <div class="col-md-4">
+                <div class="mr-2 ml-3 mt-2" style="color:white ;">{{j.labels}}</div>
+              </div>
+              <div class="col-md-2">
+                <div class="mr-2 ml-3 mt-2" style="color:white ;">:</div>
+              </div>
+              <div class="col-md-6 ">
+                <div class="mr-2 ml-3 mt-2" style="color:white ;">{{j.discription}}</div>
+                
+              </div>
+            </div>
+            {%endfor%}
           
           <div class="row pt-1">
             
             <div class="col-md-4 ">
-              <div class="mr-2 ml-3 mt-2" style="color:white ;">Attach Files</div>
+              <div class="mr-2 ml-3 mt-2" style="color:white ;">Attached File</div>
             </div>
             <div class="col-md-2">
               <div class="mr-2 ml-3 mt-2" style="color:white ;">:</div>
             </div>
-            <div class="col-md-6 "style="margin-left: -150px;">
-              
-              <button type="submit" name="submit" id="alert2" class="btn-primary Search" >Download Attach File</button>
+
+            {% if client.client_files != ""%}
+            <div class="col-md-6 " style="margin-left: -150px;">
+              <a href="{{client.client_files.url}}"><div class="btn-primary Search" >Download Attach File</div></a>
             </div>
+            {%else%}
+            <div class="col-md-6 " style="margin-left: -150px;">
+              <div class="btn-primary Search" >No Attach File</div>
+            </div>
+            {%endif%}
+ 
+            
           </div>
+
+          
         </fieldset>
           <fieldset>
             <legend>Requirments</legend>
-            <td class="text-primary"><a href="" data-toggle="modal" data-target="#view_requir"
+            {% if client.seo != None%}
+            <a href="" data-toggle="modal" data-target="#view_seo"
               style="text-decoration: none;">
-              <div class="badge badge-outline-info">Seo</div>
-            </a></td>
+              <div class="badge badge-outline-info m-2">{{client.seo}}</div>
+            </a>
+            {%else%}
+            {%endif%}
+            
+            {% if client.smm != None%}
+            <a href="" data-toggle="modal" data-target="#view_smm"
+              style="text-decoration: none;">
+              <div class="badge badge-outline-info m-2">{{client.smm}}</div>
+            </a>
+            {%else%}
+            {%endif%}
+            {% if client.em != None%}
+            <a href="" data-toggle="modal" data-target="#view_em"
+              style="text-decoration: none;">
+              <div class="badge badge-outline-info m-2">{{client.em}}</div>
+            </a>
+            {%else%}
+            {%endif%}
+            {% if client.cm != None%}
+            <a href="" data-toggle="modal" data-target="#view_cm"
+              style="text-decoration: none;">
+              <div class="badge badge-outline-info m-2">{{client.cm}}</div>
+            </a>
+            {%else%}
+            {%endif%}
+            {% if client.am != None%}
+            <a href="" data-toggle="modal" data-target="#view_am"
+              style="text-decoration: none;">
+              <div class="badge badge-outline-info m-2">{{client.am}}</div>
+            </a>
+            {%else%}
+            {%endif%}
+            {% if client.mm != None%}
+            <a href="" data-toggle="modal" data-target="#view_mm"
+              style="text-decoration: none;">
+              <div class="badge badge-outline-info m-2">{{client.mm}}</div>
+            </a>
+            {%else%}
+            {%endif%}
+            {% if client.vm != None%}
+            <a href="" data-toggle="modal" data-target="#view_vm"
+              style="text-decoration: none;">
+              <div class="badge badge-outline-info m-2">{{client.vm}}</div>
+            </a>
+            {%else%}
+            {%endif%}
+            {% for j in addirq %}
+            <a href="" data-toggle="modal" data-target="#view_addi{{j.discription}}"
+              style="text-decoration: none;">
+              <div class="badge badge-outline-info m-2">{{j.labels}}</div>
+            </a>
+            {% endfor %}
 
-            <td class="text-primary"><a href="" data-toggle="modal" data-target="#view_requir"
-              style="text-decoration: none;">
-              <div class="badge badge-outline-info">Smm</div>
-            </a></td>
-
-            <td class="text-primary"><a href="" data-toggle="modal" data-target="#view_requir"
-              style="text-decoration: none;">
-              <div class="badge badge-outline-info">Email Marketing</div>
-            </a></td><td class="text-primary"><a href="" data-toggle="modal" data-target="#view_requir"
-              style="text-decoration: none;">
-              <div class="badge badge-outline-info">Video Marketing</div>
-            </a></td>
+            
           </fieldset>
           
 
@@ -175,7 +257,7 @@
   <div class="col-md-2"></div>
 </div>
 
-<div class="rowmt-5 modal fade" id="view_requir">
+<div class="rowmt-5 modal fade" id="#view_addi{{j.discription}}">
   <div class="modal-dialog bd-example-modal-xl modal-dialog-centered" role="document" tabindex="-1" role="dialog"
     aria-labelledby="myLargeModalLabel" aria-hidden="true">
     <div class="modal-content modal-xl" style="background-color: #191c24;">
@@ -185,27 +267,297 @@
             style="background-color: #191c24;border:none;float: right;font-size: 20px;">
             <span aria-hidden="true">&times;</span>
           </button>
-          <div class="text-info" style="font-size: 20px;font-weight: 600;">Details</div>
-
-          <form action="" method="POST" enctype="multipart/form-data">
-            {% csrf_token %} 
+          <div class="text-info" style="font-size: 20px;font-weight: 600;">{{client.seo}}</div>
 
             <div class="row mt-5">
               
               <div class="col-md-12 ">
-                <p name="smm_txt" id="smm_txt" class="" style="font-size: 18px;">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Asperiores tempora maiores voluptate ut illum reiciendis incidunt fugit, ipsa molestiae ea praesentium nulla magni dolore nobis culpa labore repellat impedit doloribus!</p>
-                <button type="submit" name="submit" id="alert2" class="btn-primary Search" >Download Attach File</button>
+                <p  class="" style="font-size: 18px;">{{client.seo_txt}}</p>
+                {% if client.seo_file != ""%}
+                <a href="{{client.seo_file.url}}"><div  class="btn-primary Search" >Download Attach File</div></a>
+                {%else%}
+                
+                  <div class="btn-primary Search" >No Attach File</div>
+               
+                {%endif%}
+    
               </div>
             </div>
-            
-          </form>
+    
         </div>
       </div>
     </div>
   </div>
 </div>
 
-<form action="#" method="post" enctype="multipart/form-data">
+
+<div class="rowmt-5 modal fade" id="view_seo">
+  <div class="modal-dialog bd-example-modal-xl modal-dialog-centered" role="document" tabindex="-1" role="dialog"
+    aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <div class="modal-content modal-xl" style="background-color: #191c24;">
+      <div class="card ">
+        <div class="card-body">
+          <button type="button" class="close text-light" data-dismiss="modal" aria-label=""
+            style="background-color: #191c24;border:none;float: right;font-size: 20px;">
+            <span aria-hidden="true">&times;</span>
+          </button>
+          <div class="text-info" style="font-size: 20px;font-weight: 600;">{{client.seo}}</div>
+
+            <div class="row mt-5">
+              
+              <div class="col-md-12 ">
+                <p  class="" style="font-size: 18px;">{{client.seo_txt}}</p>
+                {% if client.seo_file != ""%}
+                <a href="{{client.seo_file.url}}"><div  class="btn-primary Search" >Download Attach File</div></a>
+                {%else%}
+                
+                  <div class="btn-primary Search" >No Attach File</div>
+               
+                {%endif%}
+    
+              </div>
+            </div>
+    
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="rowmt-5 modal fade" id="view_sem">
+  <div class="modal-dialog bd-example-modal-xl modal-dialog-centered" role="document" tabindex="-1" role="dialog"
+    aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <div class="modal-content modal-xl" style="background-color: #191c24;">
+      <div class="card ">
+        <div class="card-body">
+          <button type="button" class="close text-light" data-dismiss="modal" aria-label=""
+            style="background-color: #191c24;border:none;float: right;font-size: 20px;">
+            <span aria-hidden="true">&times;</span>
+          </button>
+          <div class="text-info" style="font-size: 20px;font-weight: 600;">{{client.sem}}</div>
+
+            <div class="row mt-5">
+              
+              <div class="col-md-12 ">
+                <p  class="" style="font-size: 18px;">{{client.sem_txt}}</p>
+                {% if client.sem_file != ""%}
+                  <a href="{{client.sem_file.url}}"><div  class="btn-primary Search" >Download Attach File</div></a>
+                {%else%}
+                
+                  <div class="btn-primary Search" >No Attach File</div>
+               
+                {%endif%}
+                
+              </div>
+            </div>
+    
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="rowmt-5 modal fade" id="view_smm">
+  <div class="modal-dialog bd-example-modal-xl modal-dialog-centered" role="document" tabindex="-1" role="dialog"
+    aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <div class="modal-content modal-xl" style="background-color: #191c24;">
+      <div class="card ">
+        <div class="card-body">
+          <button type="button" class="close text-light" data-dismiss="modal" aria-label=""
+            style="background-color: #191c24;border:none;float: right;font-size: 20px;">
+            <span aria-hidden="true">&times;</span>
+          </button>
+          <div class="text-info" style="font-size: 20px;font-weight: 600;">{{client.smm}}</div>
+
+            <div class="row mt-5">
+              
+              <div class="col-md-12 ">
+                <p  class="" style="font-size: 18px;">{{client.smm_txt}}</p>
+                {% if client.smm_file != ""%}
+                  <a href="{{client.smm_file.url}}"><div  class="btn-primary Search" >Download Attach File</div></a>
+                {%else%}
+                
+                  <div class="btn-primary Search" >No Attach File</div>
+               
+                {%endif%}
+                
+              </div>
+            </div>
+    
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="rowmt-5 modal fade" id="view_em">
+  <div class="modal-dialog bd-example-modal-xl modal-dialog-centered" role="document" tabindex="-1" role="dialog"
+    aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <div class="modal-content modal-xl" style="background-color: #191c24;">
+      <div class="card ">
+        <div class="card-body">
+          <button type="button" class="close text-light" data-dismiss="modal" aria-label=""
+            style="background-color: #191c24;border:none;float: right;font-size: 20px;">
+            <span aria-hidden="true">&times;</span>
+          </button>
+          <div class="text-info" style="font-size: 20px;font-weight: 600;">{{client.em}}</div>
+
+            <div class="row mt-5">
+              
+              <div class="col-md-12 ">
+                <p   class="" style="font-size: 18px;">{{client.em_txt}}</p>
+                {% if client.em_file != ""%}
+                <a href="{{client.em_file.url}}"><div  class="btn-primary Search" >Download Attach File</div></a>
+                {%else%}
+                
+                  <div class="btn-primary Search" >No Attach File</div>
+               
+                {%endif%}
+                
+              </div>
+            </div>
+    
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="rowmt-5 modal fade" id="view_cm">
+  <div class="modal-dialog bd-example-modal-xl modal-dialog-centered" role="document" tabindex="-1" role="dialog"
+    aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <div class="modal-content modal-xl" style="background-color: #191c24;">
+      <div class="card ">
+        <div class="card-body">
+          <button type="button" class="close text-light" data-dismiss="modal" aria-label=""
+            style="background-color: #191c24;border:none;float: right;font-size: 20px;">
+            <span aria-hidden="true">&times;</span>
+          </button>
+          <div class="text-info" style="font-size: 20px;font-weight: 600;">{{client.cm}}</div>
+
+            <div class="row mt-5">
+              
+              <div class="col-md-12 ">
+                <p  class="" style="font-size: 18px;">{{client.cm_txt}}</p>
+                {% if client.cm_file != ""%}
+                <a href="{{client.cm_file.url}}"><div  class="btn-primary Search" >Download Attach File</div></a>
+                {%else%}
+                
+                  <div class="btn-primary Search" >No Attach File</div>
+               
+                {%endif%}
+                
+              </div>
+            </div>
+    
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="rowmt-5 modal fade" id="view_am">
+  <div class="modal-dialog bd-example-modal-xl modal-dialog-centered" role="document" tabindex="-1" role="dialog"
+    aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <div class="modal-content modal-xl" style="background-color: #191c24;">
+      <div class="card ">
+        <div class="card-body">
+          <button type="button" class="close text-light" data-dismiss="modal" aria-label=""
+            style="background-color: #191c24;border:none;float: right;font-size: 20px;">
+            <span aria-hidden="true">&times;</span>
+          </button>
+          <div class="text-info" style="font-size: 20px;font-weight: 600;">{{client.am}}</div>
+
+            <div class="row mt-5">
+              
+              <div class="col-md-12 ">
+                <p  class="" style="font-size: 18px;">{{client.am_txt}}</p>
+                
+                {% if client.cm_file != ""%}
+                <a href="{{client.am_file.url}}"><div  class="btn-primary Search" >Download Attach File</div></a>
+                {%else%}
+                
+                  <div class="btn-primary Search" >No Attach File</div>
+               
+                {%endif%}
+              </div>
+            </div>
+    
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="rowmt-5 modal fade" id="view_mm">
+  <div class="modal-dialog bd-example-modal-xl modal-dialog-centered" role="document" tabindex="-1" role="dialog"
+    aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <div class="modal-content modal-xl" style="background-color: #191c24;">
+      <div class="card ">
+        <div class="card-body">
+          <button type="button" class="close text-light" data-dismiss="modal" aria-label=""
+            style="background-color: #191c24;border:none;float: right;font-size: 20px;">
+            <span aria-hidden="true">&times;</span>
+          </button>
+          <div class="text-info" style="font-size: 20px;font-weight: 600;">{{client.mm}}</div>
+
+            <div class="row mt-5">
+              
+              <div class="col-md-12 ">
+                <p  class="" style="font-size: 18px;">{{client.mm_txt}}</p>
+                {% if client.mm_file != ""%}
+                <a href="{{client.mm_file.url}}"><div  class="btn-primary Search" >Download Attach File</div></a>
+                {%else%}
+                
+                  <div class="btn-primary Search" >No Attach File</div>
+               
+                {%endif%}
+                
+              </div>
+            </div>
+    
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="rowmt-5 modal fade" id="view_vm">
+  <div class="modal-dialog bd-example-modal-xl modal-dialog-centered" role="document" tabindex="-1" role="dialog"
+    aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <div class="modal-content modal-xl" style="background-color: #191c24;">
+      <div class="card ">
+        <div class="card-body">
+          <button type="button" class="close text-light" data-dismiss="modal" aria-label=""
+            style="background-color: #191c24;border:none;float: right;font-size: 20px;">
+            <span aria-hidden="true">&times;</span>
+          </button>
+          <div class="text-info" style="font-size: 20px;font-weight: 600;">{{client.vm}}</div>
+
+            <div class="row mt-5">
+              
+              <div class="col-md-12 ">
+                <p class="" style="font-size: 18px;">{{client.vm_txt}}</p>
+                {% if client.vm_file != ""%}
+                <a href="{{client.vm_file.url}}"><div  class="btn-primary Search" >Download Attach File</div></a>
+                {%else%}
+                
+                  <div class="btn-primary Search" >No Attach File</div>
+               
+                {%endif%}
+                
+              </div>
+            </div>
+    
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<form action="{% url 'update_client' client.id %}" method="post" enctype="multipart/form-data">
   {% csrf_token %}
   <div class="modal fade" id="edit_clint">
     <div class="modal-dialog modal-xl modal-dialog-centered" role="document">
@@ -226,8 +578,8 @@
                 <div class="mr-2 ml-3 mt-2" style="color:white ;">Client Name </div>
               </div>
               <div class="col-md-8 ">
-                <input type="text" class="drop form-control ml-3 mt-2 text-light" value="Infox Technologies" style="border:1px solid #6C7293 ;color:#6C7293;">
-                <button class="btn btn-light mt-2" id="add_info_row">+</button>
+                <input type="text" class="drop form-control ml-3 mt-2 text-light" name="client_name" value="{{client.client_name}}" style="border:1px solid #6C7293 ;color:#6C7293;">
+                <div class="btn btn-light mt-2" id="add_info_row">+</div>
               </div>
             </div>
             <div class="row pt-1">
@@ -235,8 +587,8 @@
                 <div class=" mr-2 ml-3 mt-2" style="color:white ;">Address</div>
               </div>
               <div class="col-md-8 ">
-                <textarea name="description" class="drop form-control ml-3 mt-2 text-light" required
-                  style="border:1px solid #6C7293 ;height:70px;">Infox Technologies,Infoparck Campus, Ground Floor Carnivel Infoparck, Kakkanadu, Kochi, Kerala, 6823121</textarea>
+                <textarea name="client_address" class="drop form-control ml-3 mt-2 text-light"  required
+                  style="border:1px solid #6C7293 ;height:70px;">{{client.client_address}}</textarea>
               </div>
             </div>
             <div class="row pt-1">
@@ -244,9 +596,19 @@
                 <div class="mr-2 ml-3 mt-2" style="color:white ;">Mail Id </div>
               </div>
               <div class="col-md-8 ">
-                <input type="text" class="drop form-control ml-3 mt-2 text-light" value="saijusunny1301@gmail.com" style="border:1px solid #6C7293 ;color:#6C7293;">
+                <input type="text" name="client_mail" class="drop form-control ml-3 mt-2 text-light" value="{{client.client_mail}}" style="border:1px solid #6C7293 ;color:#6C7293;">
               </div>
             </div>
+            {% for k in addicl %}
+            <div class="row pt-1">
+              <div class="col-md-4">
+                <input type="text" class="drop form-control ml-3 mt-2 text-light" style="border:1px solid #6C7293 ;color:#6C7293;" name='label[]' value="{{k.labels}}" required>
+              </div>
+              <div class="col-md-6 ">
+                <input type="text" class="drop form-control ml-3 mt-2 text-light" style="border:1px solid #6C7293 ;color:#6C7293;" name='dis[]' value="{{k.discription}}" required>
+              </div>
+            </div>
+            {% endfor %}
           </fieldset>
 
           <fieldset id="clint_bis">
@@ -256,9 +618,9 @@
                 <div class="mr-2 ml-3 mt-2" style="color:white ;">Business Name</div>
               </div>
               <div class="col-md-8 ">
-                <input type="text" name="subtask" class="drop form-control ml-3 mt-2 text-light" autocomplete="off" required
-                  style="border:1px solid #6C7293 ;" value="Infox Technologies">
-                  <button class="btn btn-light mt-2" id="add_bis_row">+</button>
+                <input type="text" name="bs_name" class="drop form-control ml-3 mt-2 text-light" autocomplete="off" required
+                  style="border:1px solid #6C7293 ;" value="{{client.bs_name}}">
+                  <div class="btn btn-light mt-2" id="add_bis_row">+</div>
               </div>
             </div>
             <div class="row pt-1">
@@ -266,7 +628,7 @@
                 <div class="mr-2 ml-3 mt-2" style="color:white ;">Website URL</div>
               </div>
               <div class="col-md-8 ">
-                <input type="text" class="drop form-control ml-3 mt-2 text-light" value="www.infoxtechnologies.com" style="border:1px solid #6C7293 ;color:#6C7293;">
+                <input type="text" class="drop form-control ml-3 mt-2 text-light" name="bs_website" value="{{client.bs_website}}" style="border:1px solid #6C7293 ;color:#6C7293;">
               </div>
             </div>
             <div class="row pt-1">
@@ -274,7 +636,7 @@
                 <div class=" mr-2 ml-3 mt-2 text-light" style="color:white ;">Location</div>
               </div>
               <div class="col-md-8 ">
-                <input type="text" class="drop form-control ml-3 mt-2 text-light" style="border:1px solid #6C7293 ;color:#6C7293;" value="Kakkanadu, Kochi, 682312">
+                <input type="text" name="bs_location" class="drop form-control ml-3 mt-2 text-light" style="border:1px solid #6C7293 ;color:#6C7293;" value="{{client.bs_location}}">
             
               </div>
             </div>
@@ -283,10 +645,28 @@
                 <div class="mr-2 ml-3 mt-2" style="color:white ;">Attach Files</div>
               </div>
               <div class="col-md-8 ">
-                <input type="file" name="files" class="form-control mt-2 "
-                  style="text-decoration:none;border:none;background-color: #191c24;color:#6C7293 ;">
+                {% if client.client_files != ""%}
+                  <input type="file" name="client_files" class="form-control mt-2 "
+                  style="text-decoration:none;border:none;background-color: #191c24;color:#6C7293 ;" value="{{client.client_files.url}}">
+                {%else%}
+                
+                <input type="file" name="client_files" class="form-control mt-2 "
+                style="text-decoration:none;border:none;background-color: #191c24;color:#6C7293 ;">
+               
+                {%endif%}
+
+                
               </div>
             </div>
+            {% for l in addibs %}
+            <div class="row pt-1">
+              <div class="col-md-4">
+                <input type="text" class="drop form-control ml-3 mt-2 text-light"  value="{{l.labels}}" style="border:1px solid #6C7293 ;color:#6C7293;" name='label2[]' required>
+              </div>
+              <div class="col-md-8 ">
+                <input type="text" class="drop form-control ml-3 mt-2 text-light" value="{{l.discription}}" style="border:1px solid #6C7293 ;color:#6C7293;" name='dis2[]' required>
+              </div>
+            {% endfor %}
           </fieldset>
           
           
@@ -295,7 +675,30 @@
             <legend>Requirments</legend>
 
           <div class="row pt-1">
+            {% if client.seo != None%}
             
+            <div class="col-md-4 ">
+              
+                <input type="checkbox" class="ml-3 mt-2 text-light" id="seo" value="SEO" name="seo" onclick=check_seo() checked>
+                <label for="" class="mr-2 ml-3 mt-2" style="color:white ;">SEO</label>
+              
+            </div>
+            <div class="col-md-8 ">
+              <textarea name="seo_txt" id="seo_txt" class="drop form-control ml-3 mt-2 text-light" required
+                style="border:1px solid #6C7293 ;height:70px; ">{{client.seo_txt}}</textarea>
+                {% if client.seo_file != ""%}
+                <input type="file" name="seo_file" id="seo_file" value="{{client.seo_file.url}}" class="form-control mt-2 "
+                style="text-decoration:none;border:none;background-color: #191c24;color:#6C7293 ;">
+                {%else%}
+                
+                <input type="file" name="seo_file" id="seo_file"
+                class="form-control mt-2 "
+                style="text-decoration:none;border:none;background-color: #191c24;color:#6C7293 ;">
+               
+                {%endif%}
+                
+            </div>
+            {%else%}
             <div class="col-md-4 ">
               
                 <input type="checkbox" class="ml-3 mt-2 text-light" id="seo" value="SEO" name="seo" onclick=check_seo()>
@@ -303,94 +706,251 @@
               
             </div>
             <div class="col-md-8 ">
-              <textarea name="seo_txt" id="seo_txt" class="drop form-control ml-3 mt-2 text-light" required
-                style="border:1px solid #6C7293 ;height:70px; ">Lorem ipsum dolor sit amet consectetur adipisicing elit. Non esse magni ab nam a vero blanditiis molestias saepe est quo nihil, voluptatibus unde tenetur velit vel id dicta iste accusamus?</textarea>
+              <textarea name="seo_txt" id="seo_txt" class="drop form-control ml-3 mt-2 text-light" 
+                style="border:1px solid #6C7293 ;height:70px; display: none;" ></textarea>
                 <input type="file" name="seo_file" id="seo_file" class="form-control mt-2 "
-                style="text-decoration:none;border:none;background-color: #191c24;color:#6C7293 ;">
+                style="text-decoration:none;border:none;background-color: #191c24;color:#6C7293 ;display: none;">
             </div>
-            
+            {%endif%}
+            {% if client.smm != None%}
+
+            <div class="col-md-4 ">
+              <input type="checkbox" class="ml-3 mt-2 text-light" onclick=check_smm() name="smm" id="smm" value="SMM" checked>
+              <label for="" class="mr-2 ml-3 mt-2" style="color:white ;">SMM</label>
+            </div>
+            <div class="col-md-8 ">
+              <textarea name="smm_txt" id="smm_txt" class="drop form-control ml-3 mt-2 text-light" required
+                style="border:1px solid #6C7293 ;height:70px;"  >{{client.smm_txt}}</textarea>
+
+                {% if client.smm_file != ""%}
+                <input type="file" name="smm_file" id="smm_file" value="{{client.smm_file.url}}" class="form-control mt-2 "
+                style="text-decoration:none;border:none;background-color: #191c24;color:#6C7293 ;">
+                {%else%}
+                
+                <input type="file" name="smm_file" id="smm_file"  class="form-control mt-2 "
+                style="text-decoration:none;border:none;background-color: #191c24;color:#6C7293 ;">
+               
+                {%endif%}
+
+                
+            </div>
+            {%else%}
 
             <div class="col-md-4 ">
               <input type="checkbox" class="ml-3 mt-2 text-light" onclick=check_smm() name="smm" id="smm" value="SMM">
               <label for="" class="mr-2 ml-3 mt-2" style="color:white ;">SMM</label>
             </div>
             <div class="col-md-8 ">
-              <textarea name="smm_txt" id="smm_txt" class="drop form-control ml-3 mt-2 text-light" required
-                style="border:1px solid #6C7293 ;height:70px;"  >Lorem ipsum dolor sit amet consectetur adipisicing elit. Non esse magni ab nam a vero blanditiis molestias saepe est quo nihil, voluptatibus unde tenetur velit vel id dicta iste accusamus?</textarea>
+              <textarea name="smm_txt" id="smm_txt" class="drop form-control ml-3 mt-2 text-light" 
+                style="border:1px solid #6C7293 ;height:70px;display: none;"  ></textarea>
                 <input type="file" name="smm_file" id="smm_file" class="form-control mt-2 "
-                style="text-decoration:none;border:none;background-color: #191c24;color:#6C7293 ;">
+                style="text-decoration:none;border:none;background-color: #191c24;color:#6C7293 ;display: none;">
             </div>
-              
+
+            {%endif%}
+            {% if client.sem != None%}
+            <div class="col-md-4 ">
+              <input type="checkbox" value="SEM/PPC" id="sem" onclick=check_sem() name="sem" class="ml-3 mt-2 text-light"  checked>
+              <label for="" class="mr-2 ml-3 mt-2" style="color:white ;">SEM/PPC</label>
+            </div>
+            <div class="col-md-8 ">
+              <textarea name="sem_txt" id="sem_txt" class="drop form-control ml-3 mt-2 text-light" required
+                style="border:1px solid #6C7293 ;height:70px;" >{{client.sem_txt}}</textarea>
+                {% if client.sem_file != ""%}
+                <input type="file" name="sem_file" id="sem_file" value="{{client.sem_file.url}}" class="form-control mt-2 "
+                style="text-decoration:none;border:none;background-color: #191c24;color:#6C7293 ;">
+                {%else%}
+                
+                <input type="file" name="sem_file" id="sem_file"  class="form-control mt-2 "
+                style="text-decoration:none;border:none;background-color: #191c24;color:#6C7293 ;">
+               
+                {%endif%}
+                
+            </div>
+            {%else%}
             <div class="col-md-4 ">
               <input type="checkbox" value="SEM/PPC" id="sem" onclick=check_sem() name="sem" class="ml-3 mt-2 text-light" >
               <label for="" class="mr-2 ml-3 mt-2" style="color:white ;">SEM/PPC</label>
             </div>
             <div class="col-md-8 ">
-              <textarea name="sem_txt" id="sem_txt" class="drop form-control ml-3 mt-2 text-light" required
-                style="border:1px solid #6C7293 ;height:70px;" >Lorem ipsum dolor sit amet consectetur adipisicing elit. Non esse magni ab nam a vero blanditiis molestias saepe est quo nihil, voluptatibus unde tenetur velit vel id dicta iste accusamus?</textarea>
+                <textarea name="sem_txt" id="sem_txt" class="drop form-control ml-3 mt-2 text-light" 
+                style="border:1px solid #6C7293 ;height:70px;display: none;" ></textarea>
                 <input type="file" name="sem_file" id="sem_file" class="form-control mt-2 "
-                style="text-decoration:none;border:none;background-color: #191c24;color:#6C7293 ;">
+                style="text-decoration:none;border:none;background-color: #191c24;color:#6C7293 ;display: none;">
             </div>
-
+            {%endif%}
+            {% if client.em != None%}
+            <div class="col-md-4 ">
+              <input type="checkbox" class="ml-3 mt-2 text-light" onclick=check_em() id="em" name="em" value="Email Marketing" checked>
+              <label for="" class="mr-2 ml-3 mt-2" style="color:white ;">Email Marketing</label>
+            </div>
+            <div class="col-md-8 ">
+              <textarea name="em_txt" id="em_txt" name="em_txt" class="drop form-control ml-3 mt-2 text-light" required
+                style="border:1px solid #6C7293 ;height:70px;" >{{client.em_txt}}</textarea>
+                {% if client.em_file != ""%}
+                <input type="file" name="em_file" id="em_file" value="{{client.em_file.url}}" class="form-control mt-2 "
+                style="text-decoration:none;border:none;background-color: #191c24;color:#6C7293 ;">
+                {%else%}
+                
+                <input type="file" name="em_file" id="em_file"  class="form-control mt-2 "
+                style="text-decoration:none;border:none;background-color: #191c24;color:#6C7293 ;">
+               
+                {%endif%}
+                
+            </div>
+            {%else%}
             <div class="col-md-4 ">
               <input type="checkbox" class="ml-3 mt-2 text-light" onclick=check_em() id="em" name="em" value="Email Marketing">
               <label for="" class="mr-2 ml-3 mt-2" style="color:white ;">Email Marketing</label>
             </div>
             <div class="col-md-8 ">
-              <textarea name="em_txt" id="em_txt" name="em_txt" class="drop form-control ml-3 mt-2 text-light" required
-                style="border:1px solid #6C7293 ;height:70px;" >Lorem ipsum dolor sit amet consectetur adipisicing elit. Non esse magni ab nam a vero blanditiis molestias saepe est quo nihil, voluptatibus unde tenetur velit vel id dicta iste accusamus?</textarea>
+              <textarea name="em_txt" id="em_txt" name="em_txt" class="drop form-control ml-3 mt-2 text-light" 
+                style="border:1px solid #6C7293 ;height:70px;display: none;" ></textarea>
                 <input type="file" name="em_file" id="em_file" class="form-control mt-2 "
-                style="text-decoration:none;border:none;background-color: #191c24;color:#6C7293 ;">
+                style="text-decoration:none;border:none;background-color: #191c24;color:#6C7293 ;display: none;">
             </div>
+            {%endif%}
 
-            
+            {% if client.cm != None%}
+            <div class="col-md-4 ">
+              <input type="checkbox" class="ml-3 mt-2 text-light" onclick=check_cm() name="cm" id="cm" value="Content Marketing"  checked>
+              <label for="" class="mr-2 ml-3 mt-2" style="color:white ;">Content Marketing</label>
+            </div>
+            <div class="col-md-8 ">
+              <textarea name="cm_txt" id="cm_txt" class="drop form-control ml-3 mt-2 text-light" required
+                style="border:1px solid #6C7293 ;height:70px;" >{{client.cm_txt}}</textarea>
+                {% if client.cm_file != ""%}
+                <input type="file" name="cm_file" id="cm_file" value="{{client.cm_file.url}}" class="form-control mt-2 "
+                style="text-decoration:none;border:none;background-color: #191c24;color:#6C7293 ;">
+                {%else%}
+                <input type="file" name="cm_file" id="cm_file" class="form-control mt-2 "
+                style="text-decoration:none;border:none;background-color: #191c24;color:#6C7293 ;">
+               
+                {%endif%}
+                
+            </div>
+            {%else%}
             <div class="col-md-4 ">
               <input type="checkbox" class="ml-3 mt-2 text-light" onclick=check_cm() name="cm" id="cm" value="Content Marketing" >
               <label for="" class="mr-2 ml-3 mt-2" style="color:white ;">Content Marketing</label>
             </div>
             <div class="col-md-8 ">
-              <textarea name="cm_txt" id="cm_txt" class="drop form-control ml-3 mt-2 text-light" required
-                style="border:1px solid #6C7293 ;height:70px;" >Lorem ipsum dolor sit amet consectetur adipisicing elit. Non esse magni ab nam a vero blanditiis molestias saepe est quo nihil, voluptatibus unde tenetur velit vel id dicta iste accusamus?</textarea>
+              <textarea name="cm_txt" id="cm_txt" class="drop form-control ml-3 mt-2 text-light" 
+                style="border:1px solid #6C7293 ;height:70px;display: none;" ></textarea>
                 <input type="file" name="cm_file" id="cm_file" class="form-control mt-2 "
-                style="text-decoration:none;border:none;background-color: #191c24;color:#6C7293 ;">
+                style="text-decoration:none;border:none;background-color: #191c24;color:#6C7293 ;display: none;">
             </div>
+            {%endif%}
 
-
+            {% if client.am != None%}
+            <div class="col-md-4 ">
+              <input type="checkbox" class="ml-3 mt-2 text-light" onclick=check_am() name="am" id="am" value="Affiliate Marketing"  checked>
+              <label for="" class="mr-2 ml-3 mt-2" style="color:white ;">Affiliate Marketing</label>
+            </div>
+            <div class="col-md-8 ">
+              <textarea name="am_txt" id="am_txt" class="drop form-control ml-3 mt-2 text-light" required
+                style="border:1px solid #6C7293 ;height:70px;" >{{client.am_txt}}</textarea>
+                {% if client.am_file != ""%}
+                <input type="file" name="am_file" id="am_file" value="{{client.am_file.url}}" class="form-control mt-2 "
+                style="text-decoration:none;border:none;background-color: #191c24;color:#6C7293 ;">
+                {%else%}
+                <input type="file" name="am_file" id="am_file"  class="form-control mt-2 "
+                style="text-decoration:none;border:none;background-color: #191c24;color:#6C7293 ;">
+               
+                {%endif%}
+                
+            </div>
+            {%else%}
             <div class="col-md-4 ">
               <input type="checkbox" class="ml-3 mt-2 text-light" onclick=check_am() name="am" id="am" value="Affiliate Marketing" >
               <label for="" class="mr-2 ml-3 mt-2" style="color:white ;">Affiliate Marketing</label>
             </div>
             <div class="col-md-8 ">
-              <textarea name="am_txt" id="am_txt" class="drop form-control ml-3 mt-2 text-light" required
-                style="border:1px solid #6C7293 ;height:70px;" >Lorem ipsum dolor sit amet consectetur adipisicing elit. Non esse magni ab nam a vero blanditiis molestias saepe est quo nihil, voluptatibus unde tenetur velit vel id dicta iste accusamus?</textarea>
+              <textarea name="am_txt" id="am_txt" class="drop form-control ml-3 mt-2 text-light" 
+                style="border:1px solid #6C7293 ;height:70px;display: none;" ></textarea>
                 <input type="file" name="am_file" id="am_file" class="form-control mt-2 "
-                style="text-decoration:none;border:none;background-color: #191c24;color:#6C7293 ;">
+                style="text-decoration:none;border:none;background-color: #191c24;color:#6C7293 ;display: none;">
             </div>
-              
+            {%endif%}
+            {% if client.mm != None%}
+            <div class="col-md-4 ">
+              <input type="checkbox" class="ml-3 mt-2 text-light" onclick=check_mm() name="mm" id="mm" value="Mobile marketing" checked>
+              <label for="" class="mr-2 ml-3 mt-2" style="color:white ;">Mobile marketing</label>
+            </div>
+            <div class="col-md-8 ">
+              <textarea name="mm_txt" id="mm_txt" class="drop form-control ml-3 mt-2 text-light" required
+                style="border:1px solid #6C7293 ;height:70px; " >{{client.mm_txt}}</textarea>
+                {% if client.mm_file != ""%}
+                <input type="file" name="mm_file" id="mm_file" value="{{client.mm_file.url}}" class="form-control mt-2 "
+                style="text-decoration:none;border:none;background-color: #191c24;color:#6C7293 ;">
+                {%else%}
+                <input type="file" name="mm_file" id="mm_file" class="form-control mt-2 "
+                style="text-decoration:none;border:none;background-color: #191c24;color:#6C7293 ;">
+               
+                {%endif%}
+
+                
+            </div>
+            {%else%}
             <div class="col-md-4 ">
               <input type="checkbox" class="ml-3 mt-2 text-light" onclick=check_mm() name="mm" id="mm" value="Mobile marketing">
               <label for="" class="mr-2 ml-3 mt-2" style="color:white ;">Mobile marketing</label>
             </div>
             <div class="col-md-8 ">
-              <textarea name="mm_txt" id="mm_txt" class="drop form-control ml-3 mt-2 text-light" required
-                style="border:1px solid #6C7293 ;height:70px; " >Lorem ipsum dolor sit amet consectetur adipisicing elit. Non esse magni ab nam a vero blanditiis molestias saepe est quo nihil, voluptatibus unde tenetur velit vel id dicta iste accusamus?</textarea>
+              <textarea name="mm_txt" id="mm_txt" class="drop form-control ml-3 mt-2 text-light" 
+                style="border:1px solid #6C7293 ;height:70px; display: none;" ></textarea>
                 <input type="file" name="mm_file" id="mm_file" class="form-control mt-2 "
-                style="text-decoration:none;border:none;background-color: #191c24;color:#6C7293 ;">
+                style="text-decoration:none;border:none;background-color: #191c24;color:#6C7293 ;display: none;">
             </div>
-
+            {%endif%}
+            {% if client.vm != None%}
+            <div class="col-md-4 ">
+              <input type="checkbox" class="ml-3 mt-2 text-light" onclick=check_vm() name="vm" id="vm" value="Video Marketing" checked>
+              <label for="" class="mr-2 ml-3 mt-2" style="color:white ;">Video Marketing</label>
+            </div>
+            <div class="col-md-8 ">
+              <textarea name="vm_txt" id="vm_txt" class="drop form-control ml-3 mt-2 text-light" required
+                style="border:1px solid #6C7293 ;height:70px;" >{{client.vm_txt}}</textarea>
+                {% if client.vm_file != ""%}
+                <input type="file" name="vm_file" id="vm_file" value="{{client.vm_file.url}}" class="form-control mt-2 "
+                style="text-decoration:none;border:none;background-color: #191c24;color:#6C7293 ;">
+                {%else%}
+                <input type="file" name="vm_file" id="vm_file" class="form-control mt-2 "
+                style="text-decoration:none;border:none;background-color: #191c24;color:#6C7293 ;">
+               
+                {%endif%}
+                
+            </div>
+            {%else%}
             <div class="col-md-4 ">
               <input type="checkbox" class="ml-3 mt-2 text-light" onclick=check_vm() name="vm" id="vm" value="Video Marketing">
               <label for="" class="mr-2 ml-3 mt-2" style="color:white ;">Video Marketing</label>
             </div>
             <div class="col-md-8 ">
-              <textarea name="vm_txt" id="vm_txt" class="drop form-control ml-3 mt-2 text-light" required
-                style="border:1px solid #6C7293 ;height:70px;" >Lorem ipsum dolor sit amet consectetur adipisicing elit. Non esse magni ab nam a vero blanditiis molestias saepe est quo nihil, voluptatibus unde tenetur velit vel id dicta iste accusamus?</textarea>
+              <textarea name="vm_txt" id="vm_txt" class="drop form-control ml-3 mt-2 text-light" 
+                style="border:1px solid #6C7293 ;height:70px;display: none;" ></textarea>
                 <input type="file" name="vm_file" id="vm_file" class="form-control mt-2 "
-                style="text-decoration:none;border:none;background-color: #191c24;color:#6C7293 ;">
+                style="text-decoration:none;border:none;background-color: #191c24;color:#6C7293 ;display: none;" >
             </div>
+            {%endif%}
+            {% for j in addirq %}
+            <div class="row pt-1">
+              <div class="col-md-4">
+                <input type="text" class="drop form-control ml-3 mt-2 text-light" value="{{j.labels}}" style="border:1px solid #6C7293 ;color:#6C7293;" name='label_req[]' required>
+              </div>
+              <div class="col-md-8 ">
+                
+                <textarea id="mm_txt" class="drop form-control ml-3 mt-2 text-light" 
+                style="border:1px solid #6C7293 ;color:#6C7293;" name='dis_req[]' required> {{j.discription}}</textarea>
+                <input type="file"  id="vm_file" class="form-control mt-2 " value="{{j.file.url}}"
+                style="text-decoration:none;border:none;background-color: #191c24;color:#6C7293 " name='file_add[]' required>
+              </div>
+            </div>
+            {% endfor %}
+
           </fieldset>
             <div class="col-md-4 ">
-              <button class="btn btn-light " id="add_req_row">+</button>
+              <div class="btn btn-light " id="add_req_row">+</div>
             </div>
             <div class="row" style="text-align: center;">
               <div class="col-sm-12"  >
@@ -576,10 +1136,10 @@
                     `
                     <div class="row pt-1">
                       <div class="col-md-4">
-                        <input type="text" class="drop form-control ml-3 mt-2 text-light" style="border:1px solid #6C7293 ;color:#6C7293;">
+                        <input type="text" class="drop form-control ml-3 mt-2 text-light" style="border:1px solid #6C7293 ;color:#6C7293;" name='label[]' required>
                       </div>
                       <div class="col-md-6 ">
-                        <input type="text" class="drop form-control ml-3 mt-2 text-light" style="border:1px solid #6C7293 ;color:#6C7293;">
+                        <input type="text" class="drop form-control ml-3 mt-2 text-light" style="border:1px solid #6C7293 ;color:#6C7293;" name='dis[]' required>
                       </div>
                     </div>
                                                     
@@ -597,10 +1157,10 @@
             `
             <div class="row pt-1">
             <div class="col-md-4">
-              <input type="text" class="drop form-control ml-3 mt-2 text-light" style="border:1px solid #6C7293 ;color:#6C7293;">
+              <input type="text" class="drop form-control ml-3 mt-2 text-light" style="border:1px solid #6C7293 ;color:#6C7293;" name='label2[]' required>
             </div>
             <div class="col-md-8 ">
-              <input type="text" class="drop form-control ml-3 mt-2 text-light" style="border:1px solid #6C7293 ;color:#6C7293;">
+              <input type="text" class="drop form-control ml-3 mt-2 text-light" style="border:1px solid #6C7293 ;color:#6C7293;" name='dis2[]' required>
             </div>
                                             
             `
@@ -616,14 +1176,14 @@
             `
             <div class="row pt-1">
               <div class="col-md-4">
-                <input type="text" class="drop form-control ml-3 mt-2 text-light" style="border:1px solid #6C7293 ;color:#6C7293;">
+                <input type="text" class="drop form-control ml-3 mt-2 text-light" style="border:1px solid #6C7293 ;color:#6C7293;" name='label_req[]' required>
               </div>
               <div class="col-md-8 ">
                 
-                <textarea name="mm_txt" id="mm_txt" class="drop form-control ml-3 mt-2 text-light" required
-                style="border:1px solid #6C7293 ;color:#6C7293;" ></textarea>
-                <input type="file" name="vm_file" id="vm_file" class="form-control mt-2 "
-                style="text-decoration:none;border:none;background-color: #191c24;color:#6C7293 ">
+                <textarea id="mm_txt" class="drop form-control ml-3 mt-2 text-light" 
+                style="border:1px solid #6C7293 ;color:#6C7293;" name='dis_req[]' required></textarea>
+                <input type="file"  id="vm_file" class="form-control mt-2 "
+                style="text-decoration:none;border:none;background-color: #191c24;color:#6C7293 " name='file_add[]' required>
               </div>
             </div>
                                             

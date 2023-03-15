@@ -303,51 +303,214 @@ def ad_create_work(request):
     return render(request, 'admin/ad_create_work.html',context)
 
 def save_create_work(request):
-    clint = clint_information()
+    client = client_information()
+    ids=request.session['userid']
+    usr = user_registration.objects.get(id=ids)
+    
+    if request.session.has_key('userid'):
+        userid = request.session['userid']
+    else:
+       return redirect('/')
     if request.method == 'POST':
-        clint.client_name = request.POST['client_name']
-        clint.client_name = request.POST['client_address']
-        clint.client_mail = request.POST['client_mail']
-        clint.bs_name = request.POST['bs_name']
-        clint.bs_website = request.POST['bs_website']
-        clint.bs_location = request.POST['bs_location']
-        clint.client_files = request.FILES['client_files']
-        clint.seo = request.POST['seo']
-        clint.seo_txt = request.POST['seo_txt']
-        clint.seo_file = request.FILES['seo_file']
-        clint.smm = request.POST['smm']
-        clint.smm_txt = request.POST['smm_txt']
-        clint.smm_file = request.FILES['smm_file']
-        clint.sem = request.POST['sem']
-        clint.sem_txt = request.POST['sem_txt']
-        clint.sem_file = request.FILES['sem_file']
-        clint.em = request.POST['em']
-        clint.em_txt = request.POST['em_txt']
-        clint.em_file = request.FILES['em_file']
-        clint.cm = request.POST['cm']
-        clint.cm_txt = request.POST['cm_txt']
-        clint.cm_file = request.FILES['cm_file']
-        clint.am = request.POST['am']
-        clint.am_txt = request.POST['am_txt']
-        clint.am_file = request.FILES['am_file']
-        clint.mm = request.POST['mm']
-        clint.mm_txt = request.POST['mm_txt']
-        clint.mm_file = request.FILES['mm_file']
-        clint.vm = request.POST['vm']
-        clint.vm_txt = request.POST['vm_txt']
-        clint.vm_file = request.FILES['vm_file']
-        clint.user=request.session['userid']
-        clint.save()
+        client.client_name = request.POST.get('client_name')
+        
+        client.client_address = request.POST.get('client_address')
+        client.client_mail = request.POST.get('client_mail')
+        client.bs_name = request.POST.get('bs_name')
+        client.bs_website = request.POST.get('bs_website',None)
+       
+        client.bs_location = request.POST.get('bs_location')
+        client.client_files = request.FILES.get('client_files',None)
+        client.seo = request.POST.get('seo',None)
+        client.seo_txt = request.POST.get('seo_txt',None)
+        client.seo_file = request.FILES.get('seo_file',None)
+        client.smm = request.POST.get('smm',None)
+        client.smm_txt = request.POST.get('smm_txt',None)
+        client.smm_file = request.FILES.get('smm_file',None)
+        client.sem = request.POST.get('sem',None)
+        client.sem_txt = request.POST.get('sem_txt',None)
+        client.sem_file = request.FILES.get('sem_file',None)
+        client.em = request.POST.get('em',None)
+        client.em_txt = request.POST.get('em_txt',None)
+        client.em_file = request.FILES.get('em_file',None)
+        client.cm = request.POST.get('cm',None)
+        client.cm_txt = request.POST.get('cm_txt',None)
+        client.cm_file = request.FILES.get('cm_file',None)
+        client.am = request.POST.get('am',None)
+        client.am_txt = request.POST.get('am_txt',None)
+        client.am_file = request.FILES.get('am_file',None)
+        client.mm = request.POST.get('mm',None)
+        client.mm_txt = request.POST.get('mm_txt',None)
+        client.mm_file = request.FILES.get('mm_file',None)
+        client.vm = request.POST.get('vm',None)
+        client.vm_txt = request.POST.get('vm_txt',None)
+        client.vm_file = request.FILES.get('vm_file',None)
+        client.user=usr
+        client.save()
+        
+        client = client_information.objects.get(id=client.id)
+        
+        labels = request.POST.getlist('label[]')
+        text =request.POST.getlist('dis[]')
+        
+        if len(labels)==len(text):
+            mapped = zip(labels,text)
+            mapped=list(mapped)
+            for ele in mapped:
+            
+                created = addi_client_info.objects.get_or_create(labels=ele[0],discription=ele[1],user=usr,client=client,section='client_information')
+        else:
+            pass
+
+        labels2 = request.POST.getlist('label2[]')
+        text2 =request.POST.getlist('dis2[]')
+        
+        if len(labels2)==len(text2):
+            mappeds = zip(labels2,text2)
+            mappeds=list(mappeds)
+            for ele in mappeds:
+            
+                created = addi_client_info.objects.get_or_create(labels=ele[0],discription=ele[1],user=usr,client=client,section='business_details')
+        else: 
+            pass
+          
+        
+        files_req =request.FILES.getlist('file_add[]') 
+        label_req =request.POST.getlist('label_req[]')
+        dis_req =request.POST.getlist('dis_req[]')
+
+        
+        if len(files_req)==len(label_req)==len(dis_req):
+            mapped2 = zip(label_req,dis_req,files_req)
+            mapped2=list(mapped2)
+         
+            for ele in mapped2:
+                created = addi_client_info.objects.get_or_create(labels=ele[0],discription=ele[1],file=ele[2],user=usr,client=client,section='requirments')
+
         msg_success = "Save Successfully"
-        return render(request, 'admin/ad_create_work.html',{'msg_success':msg_success})
+        return redirect("ad_create_work")
     return redirect("ad_create_work")
 
 
 def ad_view_work(request):
-    return render(request, 'admin/ad_view_work.html')
+    ids=request.session['userid']
+    usr = user_registration.objects.get(id=ids)
 
-def ad_view_clint(request):
-    return render(request, 'admin/ad_view_clint.html')
+    client=client_information.objects.filter(user=ids)
+
+    context={
+        "usr":usr,
+        "client":client,
+    }
+    return render(request, 'admin/ad_view_work.html',context)
+
+def ad_view_clint(request,id):
+    client=client_information.objects.get(id=id)
+    addicl=addi_client_info.objects.filter(client=client.id,section='client_information')
+    addibs=addi_client_info.objects.filter(client=client.id,section='business_details')
+    addirq=addi_client_info.objects.filter(client=client.id,section='requirments')
+    
+    ids=request.session['userid']
+    usr = user_registration.objects.get(id=ids)
+    context={
+        "usr":usr,
+        "client":client,
+        "addicl":addicl,
+        "addibs":addibs,
+        "addirq":addirq,
+    }
+    return render(request, 'admin/ad_view_clint.html',context)
+
+def update_client(request,id):
+    client = client_information.objects.get(id=id)
+    ids=request.session['userid']
+    usr = user_registration.objects.get(id=ids)
+    
+    if request.session.has_key('userid'):
+        userid = request.session['userid']
+    else:
+       return redirect('/')
+    if request.method == 'POST':
+        client.client_name = request.POST.get('client_name')
+        
+        client.client_address = request.POST.get('client_address')
+        client.client_mail = request.POST.get('client_mail')
+        client.bs_name = request.POST.get('bs_name')
+        client.bs_website = request.POST.get('bs_website',None)
+       
+        client.bs_location = request.POST.get('bs_location')
+        client.client_files = request.FILES.get('client_files',None)
+        client.seo = request.POST.get('seo',None)
+        client.seo_txt = request.POST.get('seo_txt',None)
+        client.seo_file = request.FILES.get('seo_file',None)
+        client.smm = request.POST.get('smm',None)
+        client.smm_txt = request.POST.get('smm_txt',None)
+        client.smm_file = request.FILES.get('smm_file',None)
+        client.sem = request.POST.get('sem',None)
+        client.sem_txt = request.POST.get('sem_txt',None)
+        client.sem_file = request.FILES.get('sem_file',None)
+        client.em = request.POST.get('em',None)
+        client.em_txt = request.POST.get('em_txt',None)
+        client.em_file = request.FILES.get('em_file',None)
+        client.cm = request.POST.get('cm',None)
+        client.cm_txt = request.POST.get('cm_txt',None)
+        client.cm_file = request.FILES.get('cm_file',None)
+        client.am = request.POST.get('am',None)
+        client.am_txt = request.POST.get('am_txt',None)
+        client.am_file = request.FILES.get('am_file',None)
+        client.mm = request.POST.get('mm',None)
+        client.mm_txt = request.POST.get('mm_txt',None)
+        client.mm_file = request.FILES.get('mm_file',None)
+        client.vm = request.POST.get('vm',None)
+        client.vm_txt = request.POST.get('vm_txt',None)
+        client.vm_file = request.FILES.get('vm_file',None)
+        client.user=usr
+        client.save()
+        
+        client = client_information.objects.get(id=client.id)
+        
+        labels = request.POST.getlist('label[]')
+        text =request.POST.getlist('dis[]')
+        
+        if len(labels)==len(text):
+            mapped = zip(labels,text)
+            mapped=list(mapped)
+            for ele in mapped:
+            
+                created = addi_client_info.objects.get_or_create(labels=ele[0],discription=ele[1],user=usr,client=client,section='client_information')
+        else:
+            pass
+
+        labels2 = request.POST.getlist('label2[]')
+        text2 =request.POST.getlist('dis2[]')
+        
+        if len(labels2)==len(text2):
+            mappeds = zip(labels2,text2)
+            mappeds=list(mappeds)
+            for ele in mappeds:
+            
+                created = addi_client_info.objects.get_or_create(labels=ele[0],discription=ele[1],user=usr,client=client,section='business_details')
+        else: 
+            pass
+          
+        
+        files_req =request.FILES.getlist('file_add[]') 
+        label_req =request.POST.getlist('label_req[]')
+        dis_req =request.POST.getlist('dis_req[]')
+
+        
+        if len(files_req)==len(label_req)==len(dis_req):
+            mapped2 = zip(label_req,dis_req,files_req)
+            mapped2=list(mapped2)
+         
+            for ele in mapped2:
+                created = addi_client_info.objects.get_or_create(labels=ele[0],discription=ele[1],file=ele[2],user=usr,client=client,section='Requirments')
+
+        msg_success = "Save Successfully"
+        return redirect('ad_view_clint',id)
+    return redirect('ad_view_clint',id)
+
+
 
 
 def ad_daily_work_det(request):

@@ -39,7 +39,8 @@
               </div>
               <div class="col-md-8 ">
                 <input type="text" class="drop form-control ml-3 mt-2 text-light" style="border:1px solid #6C7293 ;color:#6C7293;" name="client_name">
-                <button class="btn btn-light mt-2" id="add_info_row">+</button>
+                <div class="btn btn-light mt-2" id="add_info_row">+</div>
+                <!-- <button class="btn btn-light mt-2" id="add_info_row">+</button> -->
               </div>
             </div>
             <div class="row pt-1">
@@ -70,7 +71,7 @@
               <div class="col-md-8 ">
                 <input type="text" name="bs_name" class="drop form-control ml-3 mt-2 text-light" autocomplete="off" 
                   style="border:1px solid #6C7293 ;">
-                  <button class="btn btn-light mt-2" id="add_bis_row">+</button>
+                  <div class="btn btn-light mt-2" id="add_bis_row">+</d>
               </div>
             </div>
             <div class="row pt-1">
@@ -198,11 +199,11 @@
               <textarea name="vm_txt" id="vm_txt" class="drop form-control ml-3 mt-2 text-light" 
                 style="border:1px solid #6C7293 ;height:70px;display: none;" ></textarea>
                 <input type="file" name="vm_file" id="vm_file" class="form-control mt-2 "
-                style="text-decoration:none;border:none;background-color: #191c24;color:#6C7293 ;display: none;">
+                style="text-decoration:none;border:none;background-color: #191c24;color:#6C7293 ;display: none;" >
             </div>
           </fieldset>
             <div class="col-md-4 ">
-              <button class="btn btn-light mt-2" id="add_req_row">+</button>
+              <div class="btn btn-light mt-2" id="add_req_row">+</div>
             </div>
             
            
@@ -368,10 +369,10 @@
                     `
                     <div class="row pt-1">
                       <div class="col-md-4">
-                        <input type="text" class="drop form-control ml-3 mt-2 text-light" style="border:1px solid #6C7293 ;color:#6C7293;">
+                        <input type="text" class="drop form-control ml-3 mt-2 text-light" style="border:1px solid #6C7293 ;color:#6C7293;" name='label[]' required>
                       </div>
                       <div class="col-md-6 ">
-                        <input type="text" class="drop form-control ml-3 mt-2 text-light" style="border:1px solid #6C7293 ;color:#6C7293;">
+                        <input type="text" class="drop form-control ml-3 mt-2 text-light" style="border:1px solid #6C7293 ;color:#6C7293;" name='dis[]' required>
                       </div>
                     </div>
                                                     
@@ -389,10 +390,10 @@
             `
             <div class="row pt-1">
             <div class="col-md-4">
-              <input type="text" class="drop form-control ml-3 mt-2 text-light" style="border:1px solid #6C7293 ;color:#6C7293;">
+              <input type="text" class="drop form-control ml-3 mt-2 text-light" style="border:1px solid #6C7293 ;color:#6C7293;" name='label2[]' required>
             </div>
             <div class="col-md-8 ">
-              <input type="text" class="drop form-control ml-3 mt-2 text-light" style="border:1px solid #6C7293 ;color:#6C7293;">
+              <input type="text" class="drop form-control ml-3 mt-2 text-light" style="border:1px solid #6C7293 ;color:#6C7293;" name='dis2[]' required>
             </div>
                                             
             `
@@ -408,14 +409,14 @@
             `
             <div class="row pt-1">
               <div class="col-md-4">
-                <input type="text" class="drop form-control ml-3 mt-2 text-light" style="border:1px solid #6C7293 ;color:#6C7293;">
+                <input type="text" class="drop form-control ml-3 mt-2 text-light" style="border:1px solid #6C7293 ;color:#6C7293;" name='label_req[]' required>
               </div>
               <div class="col-md-8 ">
                 
-                <textarea name="mm_txt" id="mm_txt" class="drop form-control ml-3 mt-2 text-light" 
-                style="border:1px solid #6C7293 ;color:#6C7293;" ></textarea>
-                <input type="file" name="vm_file" id="vm_file" class="form-control mt-2 "
-                style="text-decoration:none;border:none;background-color: #191c24;color:#6C7293 ">
+                <textarea id="mm_txt" class="drop form-control ml-3 mt-2 text-light" 
+                style="border:1px solid #6C7293 ;color:#6C7293;" name='dis_req[]' required></textarea>
+                <input type="file"  id="vm_file" class="form-control mt-2 "
+                style="text-decoration:none;border:none;background-color: #191c24;color:#6C7293 " name='file_add[]' required>
               </div>
             </div>
                                             
